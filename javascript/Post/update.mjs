@@ -8,7 +8,7 @@ export async function updatePost(updatePostData) {
    
     
     const response = await fetchTokens(updatePostsURL,{
-        method: 'put',
+        method: 'PUT',
         body: JSON.stringify(updatePostData)
     });
     const update = await response.json();

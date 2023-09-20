@@ -2,4 +2,81 @@
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+.avatar {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+  }
+  
+  .searchBar,
+  .brandName {
+    min-height: 40px;
+    min-width: 230px;
+  }
+  
+  .brandName {
+    min-width: 180px;
+  }
+  
+  .sidebar,
+  .sidebarRight {
+    max-width: 360px;
+    z-index: 4;
+  }
+  
+  .sponsorImage {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+  }
+  
+  .sidebarRight {
+    left: initial;
+  }
+  
+  .customHeight {
+    min-height: 125px;
+    object-fit: cover;
+  }
+  
+  .customCard {
+    width: 96px;
+    height: 190px;
+  }
+  
+  .storyHeight {
+    min-height: 65px;
+  }
+  
+  .imageStory {
+    min-height: 190px;
+    object-fit: cover;
+  }
+  
+  .timelineWidth {
+    max-width: 680px;
+  }
+  .customProfile {
+    height: 180px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  .customPosition {
+    width: 155px;
+    height: 150px;
+  }
+  
+  .imageContainer {
+    height: 160px;
+  }
+  
+  .logoCircle {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .leftPosition {
+    z-index: 4;
+    max-width: 350px;
+  }
 
