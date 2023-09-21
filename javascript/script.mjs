@@ -5,11 +5,13 @@ import {setUpdatePostListener} from "./updatePost.mjs";
 import {setUpdateProfileListener} from "./updateProfile.mjs";
 import * as post from "./Post/index.mjs";
 import * as template from "./template/index.mjs";
+import * as storage from "./storage/index.mjs";
 
 
 setRegisterFormListener();
 setCreatePostListener();
 setUpdatePostListener();
+setUpdateProfileListener()
 
 const path = location.pathname;
 
@@ -27,13 +29,13 @@ if(path === '/profile/log-in/index.html') {
 
 // test template
 
-// async function testTemplate (){
-//     const publish = await post.getPosts();
-//     const container = document.querySelector(".testTemplate")
-//     template.renderPostTemplates(publish, container)
-// }
+async function testTemplate (){
+    const publish = await post.getPosts();
+    const container = document.querySelector(".API-title");
+    
+    template.renderPostTemplates(publish, container)
+   
+}
 
-// testTemplate()
+testTemplate()
 
-
-setUpdateProfileListener()

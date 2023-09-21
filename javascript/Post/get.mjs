@@ -10,6 +10,8 @@ export async function getPosts() {
         method: 'GET', 
     });
     const getPosts = await response.json();
+
+  
     return getPosts;
 }
 

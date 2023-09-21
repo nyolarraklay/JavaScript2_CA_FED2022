@@ -1,9 +1,13 @@
 import { logIn } from "./loginUser.mjs";
 
+
+
 export function setLogInFormListener() {
     const form = document.querySelector('#loginForm');
 
+    
     if(form) {
+        
         form.addEventListener("submit", (event) => {
             event.preventDefault();
             const logInUser = event.target;
@@ -14,7 +18,7 @@ export function setLogInFormListener() {
         
             logIn(profile)
         })
-    }
+    } 
 
 }
 
