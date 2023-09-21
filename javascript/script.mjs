@@ -2,6 +2,7 @@ import {setRegisterFormListener} from "./register.mjs";
 import {setLogInFormListener} from "./api/logInListener.mjs";
 import {setCreatePostListener} from "./createPosts.mjs";
 import {setUpdatePostListener} from "./updatePost.mjs";
+import {setUpdateProfileListener} from "./updateProfile.mjs";
 import * as post from "./Post/index.mjs";
 import * as template from "./template/index.mjs";
 
@@ -35,3 +36,4 @@ if(path === '/profile/log-in/index.html') {
 // testTemplate()
 
 
+setUpdateProfileListener()

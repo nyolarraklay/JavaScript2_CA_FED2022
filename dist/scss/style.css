@@ -11850,6 +11850,11 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.form-control:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .avatar {
   width: 35px;
   height: 35px;

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../dist/scss/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="../../javascript/script.mjs" defer type="module"></script>
+</head>
+<body class="bg-light">
+    <div class="container d-flex justify-content-evenly  flex-column flex-lg-row mt-5 pt-5">
+        <div class="text-center text-lg-start mt-lg-5 pt-lg-5">
+            <h1 class="fw-bold text-primary">Friendstegram</h1>
+            <p class="lead mx-auto mx-lg-0 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, in!</p>
+        </div>
+        <div class="text-start bg-white shadow rounded p-3 input-group-lg">
+            <form id="editProfile">
+                <div class="form-group mb-3">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" disabled name="name" >
+                </div>
+                <div class="form-group mb-3">
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" disabled name="email" >
+                </div>
+                <div class="form-group mb-3">
+                    <label for="">Banner</label>
+                    <input type="url" class="form-control" name="banner" >
+                </div>
+                <div class="form-group mb-3">
+                    <label for="">Avatar</label>
+                    <input type="url" class="form-control" name="avatar" >
+                </div>
+                <button type="submit" 
+                    class="btn btn-primary" >Update profile
+                </button>
+            </form>
+<footer class="bg-white p-4 text-muted fixed-bottom w-100 ">
+    <div class="container">
+        <div class="d-flex flex-wrap">
+            <p class="mx-2 fs-8 mb-0">English</p>
+            <p class="mx-2 fs-8 mb-0">Chinese</p>
+            <p class="mx-2 fs-8 mb-0">Korean</p>
+            <p class="mx-2 fs-8 mb-0">Tagalog</p>
+            <p class="mx-2 fs-8 mb-0">Norwegian</p>
+        </div>
+        <div class="d-flex flex-wrap">
+            <p class="mx-2 fs-8 mb-0">Log In</p>
+            <p class="mx-2 fs-8 mb-0">Message</p>
+            <p class="mx-2 fs-8 mb-0">Sign Up</p>
+            <p class="mx-2 fs-8 mb-0">Watch</p>
+        </div>
+        <div class="mt-2 mx-2">
+            <p class="fs-8">&copy; 2023</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
