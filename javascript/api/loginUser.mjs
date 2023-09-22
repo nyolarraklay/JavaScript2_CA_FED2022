@@ -22,21 +22,26 @@ export async function logIn(userData) {
   const { accessToken, ...user } = await response.json();
   storage.save("token", accessToken);
   storage.save("profile", user);
-  
+
   if (response.status === 200) {
-    location.href='post/index.html';
+    redirectToHome();
     userIcon();
   } else {
     console.log('you are not registered');
   }
 
+
+}
+
+function redirectToHome() {
+  location.href ="../../posts/index.html";
   
 }
 
 function userIcon() {
   const profilePic = storage.load("profile");
 const userPicture = document.querySelector(".profileName");
-
+console.log(profilePic);
       userPicture.innerHTML = JSON.stringify(profilePic.name)
 
 }
