@@ -27,7 +27,6 @@ if(path === '/profile/log-in/index.html') {
 // post.getPosts().then (console.log);
 
 
-// test template
 
 async function testTemplate (){
     const publish = await post.getPosts();
@@ -35,7 +34,7 @@ async function testTemplate (){
     
     template.renderPostTemplates(publish, container)
    
-    userIcon()
+    template.userIcon()
 }
 
 testTemplate()

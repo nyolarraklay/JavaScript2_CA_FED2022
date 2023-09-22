@@ -1,3 +1,5 @@
+import * as storage from "../storage/index.mjs"
+
 export function postTemplate(postData) {
   const timeLinePosts = document.createElement("div");
   timeLinePosts.classList.add("card");

@@ -1,6 +1,6 @@
 import { API_BASE_URL} from "../constant/index.mjs"
 import * as storage from "../storage/index.mjs";
-import * as template from "./template/index.mjs";
+import * as template from "../template/index.mjs";
 
 
 const action = "/api/v1/social/auth/login";
@@ -30,6 +30,7 @@ export async function logIn(userData) {
   } else {
     console.log('you are not registered');
   }
+
 
 
 }
