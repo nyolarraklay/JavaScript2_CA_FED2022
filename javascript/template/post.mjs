@@ -1,6 +1,10 @@
 export function postTemplate(postData) {
   const timeLinePosts = document.createElement("div");
-  timeLinePosts.classList.add("card-body");
+  timeLinePosts.classList.add("card");
+  timeLinePosts.classList.add("mb-3");
+
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
 
   const userImageAndName = document.createElement("div");
   userImageAndName.classList.add("d-flex");
@@ -21,6 +25,7 @@ export function postTemplate(postData) {
   const date = document.createElement("p");
   date.classList.add("fs-8");
   date.classList.add("m-0");
+  date.classList.add("text-body-secondary");
   date.innerText = postData.updated
 
 user.append(post,date)
@@ -36,10 +41,10 @@ userImageAndName.append(image,user)
     img.classList.add("card-img-bottom")
     img.src = postData.media;
     img.alt = `Image from ${postData.title}`;
-    timeLinePosts.append(userImageAndName);
-    timeLinePosts.append(postBody);
-    timeLinePosts.append(img);
-
+    cardBody.append(userImageAndName);
+    cardBody.append(postBody);
+    cardBody.append(img);
+    timeLinePosts.append(cardBody);
     
       
     
@@ -60,4 +65,15 @@ for (let i= 0;i < postDataLists.length; i++) {
 } 
 }
 
+export function userIcon() {
+  const profilePic = storage.load("profile");
+const userPicture = document.querySelector(".profileName");
+console.log(profilePic);
+      userPicture.innerHTML = JSON.stringify(profilePic.name)
 
+}
+
+export function redirectToHome() {
+  location.href ="../../posts/index.html";
+  
+}

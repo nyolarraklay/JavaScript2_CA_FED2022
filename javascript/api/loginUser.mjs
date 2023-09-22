@@ -1,5 +1,6 @@
 import { API_BASE_URL} from "../constant/index.mjs"
 import * as storage from "../storage/index.mjs";
+import * as template from "./template/index.mjs";
 
 
 const action = "/api/v1/social/auth/login";
@@ -24,8 +25,8 @@ export async function logIn(userData) {
   storage.save("profile", user);
 
   if (response.status === 200) {
-    redirectToHome();
-    userIcon();
+    template.redirectToHome();
+    
   } else {
     console.log('you are not registered');
   }
@@ -33,15 +34,5 @@ export async function logIn(userData) {
 
 }
 
-function redirectToHome() {
-  location.href ="../../posts/index.html";
-  
-}
 
-function userIcon() {
-  const profilePic = storage.load("profile");
-const userPicture = document.querySelector(".profileName");
-console.log(profilePic);
-      userPicture.innerHTML = JSON.stringify(profilePic.name)
 
-}

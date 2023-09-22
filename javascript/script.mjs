@@ -35,7 +35,12 @@ async function testTemplate (){
     
     template.renderPostTemplates(publish, container)
    
+    userIcon()
 }
 
 testTemplate()
 
+
+
+
+  
