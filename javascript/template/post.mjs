@@ -1,4 +1,5 @@
 import * as storage from "../storage/index.mjs"
+import {getPosts} from "../Post/get.mjs";
 
 export function postTemplate(postData) {
   const timeLinePosts = document.createElement("div");
@@ -38,7 +39,7 @@ userImageAndName.append(image,user)
   postBody.classList.add("card-text");
   postBody.innerText = postData.body;
 
-  if (postData.media) {
+  if ((postData.media !== undefined)) {
     const img = document.createElement("img");
     img.classList.add("card-img-bottom")
     img.src = postData.media;
@@ -47,25 +48,29 @@ userImageAndName.append(image,user)
     cardBody.append(postBody);
     cardBody.append(img);
     timeLinePosts.append(cardBody);
-    
-      
-    
-    return timeLinePosts;
-  }
+    return timeLinePosts
+  } 
 }
 
 export function renderPostTemplate(postData, parent) {
   parent.append(postTemplate(postData));
 }
 
-export function renderPostTemplates(postDataLists, parent) {
+export async function renderPostTemplates() {
+ try {
+ const publish = await getPosts();
+ const publishContent = publish.map(postTemplate);
+ const container = document.querySelector(".API-title");
  
-for (let i= 0;i < postDataLists.length; i++) {
-    const data = postDataLists[i];
-
-        parent.append(postTemplate(data)) 
-} 
+        container.append(...publishContent);
+ } 
+ catch (error) {
+  error
+ }
 }
+
+renderPostTemplates()
+
 
 export function userIcon() {
   const profilePic = storage.load("profile");
@@ -94,7 +99,10 @@ export function userIcon() {
       
 }
 
+userIcon()
+
 export function redirectToHome() {
   location.href ="../../posts/index.html";
   
 }
+

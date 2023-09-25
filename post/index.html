@@ -18,101 +18,12 @@
                 <!--left-side-->
                 <div class="col d-flex align-items-center">
                     <a href="../posts/index.html" class="text-decoration-none fs-3 text-primary m-0 brandName "> Friendstegram</a> 
-                    <div class="input-group ms-2">
-                        <!--mobile-->
-                        <span class="input-group-prepend  d-lg-none" id="searchMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                            <div class="input-group-text bg-gray border-0 rounded-circle">
-                                <i class="bi bi-search me-2 text-muted"></i>
-                            </div>
-                        </span>
-                        <!--desktop-->
-                        <span class="input-group-prepend d-none d-lg-block" id="searchMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" type="button">
-                            <div class="input-group-text bg-gray border-0 rounded-pill">
-                                <i class="bi bi-search me-2 text-muted"></i>
-                                <p class="m-0 fs-7 text-muted">Search Friendstegram</p>
-                            </div>
-                        </span>
-                            <ul class="dropdown-menu border-0 shadow p-3 overflow-auto" aria-labelledby="searchMenu">
-                                <li>
-                                <input class="rounded-pill border-0 bg-gray dropdown-item" type="text" placeholder="Search Friends...." autofocus/>
-                                </li>
-                                <!--first search-->
-                              <li class="my-4">
-                                <div class="alert fade show dropdown-item p-1 m-0 d-flex align-items-center justify-content-between" role="alert">
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://source.unsplash.com/random/1" alt="user image" class="rounded-circle me-2 avatar">
-                                        <p class="m-0">Lorem, ipsum</p>
-                                        <button type="button" class="ms-5 btn-close fs-8"
-                                        data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                    </div>
-                                </div>
-                              </li>
-                              <!--2nd searchitem-->
-                              <li class="my-4">
-                                <div class="alert fade show dropdown-item p-1 m-0 d-flex align-items-center justify-content-between" role="alert">
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://source.unsplash.com/random/2" alt="user image" class="rounded-circle me-2 avatar">
-                                        <p class="m-0">Lorem, ipsum</p>
-                                        <button type="button" class="ms-5 btn-close fs-8"
-                                        data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                    </div>
-                                </div>
-                              </li>
-                              <!--3rd searchitem-->
-                              <li class="my-4">
-                                <div class="alert fade show dropdown-item p-1 m-0 d-flex align-items-center justify-content-between" role="alert">
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://source.unsplash.com/random/3" alt="user image" class="rounded-circle me-2 avatar">
-                                        <p class="m-0">Lorem, ipsum</p>
-                                        <button type="button" class="ms-5 btn-close fs-8"
-                                        data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                    </div>
-                                </div>
-                              </li>
-                            </ul>
-                          
-                    </div>
-                </div>
-                <!--center-->
-                <div class="col d-none d-lg-flex justify-content-center">
-                    <div class="mx-4">
-                        <button class="btn px-4">
-                            <i class="text-muted fs-4 bi bi-house-door-fill"></i>
-                        </button>
-                    </div>
-                    <div class="mx-4">
-                        <button class="btn px-4">
-                            <i class="text-muted fs-4 bi bi-shop"></i>
-                        </button>
-                    </div>
-                    <div class="mx-4">
-                        <button class="btn px-4">
-                            <i class="text-muted fs-4 bi bi-people-fill"></i>
-                        </button>
-                    </div>
-                    <div class="mx-4">
-                        <button class="btn px-4">
-                            <i class="text-muted fs-4 bi bi-controller"></i>
-                        </button>
-                    </div>
                 </div>
                 <!--right-side-->
-                <div class="col d-flex d-lg-none d-xl-flex  align-items-center justify-content-end">
-                    <div class="d-none d-md-flex align-items-center justify-content-center">
+                <div class="col d-flex justify-content-end">
+                    <div class=" d-md-flex align-items-center justify-content-center">
                         <img src="https://source.unsplash.com/random/4" alt="user image" class="rounded-circle me-1 avatar">
                         <a href="#" class="m-0 text-decoration-none profileName">JohnWick</a>
-                    </div>
-                    <div class="p-1 mx-2 bg-light rounded-circle d-md-flex align-items-center avatar justify-content-center">
-                        <i class="bi bi-chat-fill"></i>
-                    </div>
-                    <div class="p-1 mx-2 bg-light rounded-circle d-md-flex align-items-center avatar justify-content-center">
-                        <i class="bi bi-bell-fill"></i>
-                    </div>
-                    <div class="p-1 mx-2 bg-light rounded-circle d-md-flex align-items-center avatar justify-content-center">
-                        <i class="bi bi-caret-down-fill"></i>
                     </div>
                 </div>  
             </div> 
@@ -120,13 +31,13 @@
     </div>
     <!--main-->
     <div class="container-fluid mt-5">
-        <div class="row justify-content-evenly">
+        <div class="row ">
             <!--left part of main-->
             <div class="col-2">  
             </div>
             <!--Timeline-center-->
             <div class="col-8">
-                <div class="row">
+                
 
                    
                     <div class="panel">
@@ -145,12 +56,22 @@
                         </div>
                     </div>
                     <div class="panel profile-info">
-                        <form>
-                            <textarea class="form-control input-lg p-text-area" rows="2" placeholder="Whats in your mind today?"></textarea>
+                        <form id="createPost">
+                            <div class="form-group">
+                                <label for="" class="d-none">Title</label>
+                                <input type="text" class="form-control" name="title" required placeholder="Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="d-none">Body</label>
+                                <textarea class="form-control p-text-area input-lg" name="body" required placeholder="Whats in your mind today?"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="d-none">Media</label>
+                                <input type="url" class="form-control" name="media" placeholder="Image"
+                                title="url domains only">
+                            </div>
+                            <button type="submit" class="btn btn-info pull-right">Post</button>
                         </form>
-                        <footer class="panel-footer">
-                            <button type="button" class="btn btn-info pull-right">Post</button>
-                        </footer>
                       </div>
 
                     <div class="d-flex flex-column justify-content-center   timelineWidth w-100 mx-auto pt-4">
@@ -161,7 +82,7 @@
                             <div class="col-2"></div>
                         </div>
                     </div>  
-                </div>
+                
         
             </div>
                 

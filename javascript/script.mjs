@@ -28,16 +28,25 @@ if(path === '/profile/log-in/index.html') {
 
 
 
-async function testTemplate (){
-    const publish = await post.getPosts();
-    const container = document.querySelector(".API-title");
-    
-    template.renderPostTemplates(publish, container)
-   
-    template.userIcon()
-}
+// async function testTemplate (){
 
-testTemplate()
+// try {
+//     const publish = await post.getPosts();
+//     const container = document.querySelector(".API-title");
+
+
+//     template.renderPostTemplates(publish, container)
+   
+//     template.userIcon()
+// } catch (error) {
+//     console.warm(error)
+// }
+    
+
+    
+// }
+
+// testTemplate()
 
 
 
