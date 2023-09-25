@@ -69,10 +69,29 @@ for (let i= 0;i < postDataLists.length; i++) {
 
 export function userIcon() {
   const profilePic = storage.load("profile");
-const userPicture = document.querySelector(".profileName");
-console.log(profilePic);
-      userPicture.innerHTML = JSON.stringify(profilePic.name)
+  const userPicture = document.querySelector(".profileName");
 
+      userPicture.innerHTML = profilePic.name
+      
+  
+  const userName = document.querySelector(".userName");
+       userName.innerHTML = profilePic.name
+
+  const userBanner = document.querySelector(".userBanner");
+ const userImage = document.createElement("img");
+ userImage.src = profilePic.banner
+ userBanner.prepend(userImage)
+ 
+ const userAvatar = document.querySelector(".userAvatar");
+ const avatar = document.createElement("img");
+ avatar.src = profilePic.avatar
+ userAvatar.prepend(avatar)
+
+ const userEmail = document.querySelector(".userEmail");
+       userEmail.innerHTML = profilePic.email
+  
+    
+      
 }
 
 export function redirectToHome() {
