@@ -1,98 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../dist/scss/style.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../dist/scss/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
     <script src="../../javascript/script.mjs" defer type="module"></script>
 
     <title>Friendstegram | Create Post</title>
-
-</head>
-<body bg-light>
+  </head>
+  <body bg-light>
     <div class="bg-white d-flex align-items-center fixed-top shadow">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <!--left-side-->
-                <div class="col d-flex align-items-center">
-                    <a href="../posts/index.html" class="text-decoration-none fs-3 text-primary m-0 brandName "> Friendstegram</a> 
-                </div>
-                <!--right-side-->
-                <div class="col d-flex justify-content-end">
-                    <div class=" d-md-flex align-items-center justify-content-center">
-                        <img src="https://source.unsplash.com/random/4" alt="user image" class="rounded-circle me-1 avatar">
-                        <a href="#" class="m-0 text-decoration-none profileName">JohnWick</a>
-                    </div>
-                </div>  
-            </div> 
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <!--left-side-->
+          <div class="col d-flex align-items-center">
+            <a
+              href="../posts/index.html"
+              class="text-decoration-none fs-3 text-primary m-0 brandName"
+            >
+              Friendstegram</a
+            >
+          </div>
+          <!--right-side-->
+          <div class="col d-flex justify-content-end">
+            <div class="d-md-flex align-items-center justify-content-center">
+              <img
+                src="https://source.unsplash.com/random/4"
+                alt="user image"
+                class="rounded-circle me-1 avatar"
+              />
+              <a href="#" class="m-0 text-decoration-none profileName"
+                >JohnWick</a
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <!--main-->
     <div class="container-fluid mt-5">
-        <div class="row ">
-            <!--left part of main-->
-            <div class="col-2">  
+      <div class="row">
+        <!--left part of main-->
+        <div class="col-2"></div>
+        <!--Timeline-center-->
+        <div class="col-8">
+          <div class="panel">
+            <div class="cover-photo">
+              <div class="socialApp-timeline-img userBanner"></div>
+              <div class="socialAPP-name">
+                <h2 class="userName">Name</h2>
+              </div>
             </div>
-            <!--Timeline-center-->
-            <div class="col-8">
-                
+            <div class="panel-body">
+              <div class="profile-thumb userAvatar"></div>
+              <a href="#" class="socialAPP-user-mail userEmail">email</a>
+            </div>
+          </div>
+          <div class="panel profile-info">
+            <form id="createPost">
+              <div class="form-group">
+                <label for="" class="d-none">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="title"
+                  required
+                  placeholder="Title"
+                />
+              </div>
+              <div class="form-group">
+                <label for="" class="d-none">Body</label>
+                <textarea
+                  class="form-control p-text-area input-lg"
+                  name="body"
+                  required
+                  placeholder="Whats in your mind today?"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="" class="d-none">Media</label>
+                <input
+                  type="url"
+                  class="form-control"
+                  name="media"
+                  placeholder="Image"
+                  title="url domains only"
+                />
+              </div>
+              <button type="submit" class="btn btn-info pull-right">
+                Post
+              </button>
+            </form>
+          </div>
 
-                   
-                    <div class="panel">
-                        <div class="cover-photo">
-                          <div class="socialApp-timeline-img userBanner">
-                              
-                          </div>
-                          <div class="socialAPP-name">
-                              <h2 class="userName">Name</h2>
-                          </div>
-                        </div>
-                        <div class="panel-body">
-                          <div class="profile-thumb userAvatar">
-                          </div>
-                          <a href="#" class="socialAPP-user-mail userEmail">email</a>
-                        </div>
-                    </div>
-                    <div class="panel profile-info">
-                        <form id="createPost">
-                            <div class="form-group">
-                                <label for="" class="d-none">Title</label>
-                                <input type="text" class="form-control" name="title" required placeholder="Title">
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="d-none">Body</label>
-                                <textarea class="form-control p-text-area input-lg" name="body" required placeholder="Whats in your mind today?"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="d-none">Media</label>
-                                <input type="url" class="form-control" name="media" placeholder="Image"
-                                title="url domains only">
-                            </div>
-                            <button type="submit" class="btn btn-info pull-right">Post</button>
-                        </form>
-                      </div>
-
-                    <div class="d-flex flex-column justify-content-center   timelineWidth w-100 mx-auto pt-4">
-                        <div class="row align-items-center">
-                            <div class="col-2"></div>
-                            <div class="API-title col-8">            
-                            </div> 
-                            <div class="col-2"></div>
-                        </div>
-                    </div>  
-                
-        
+          <div
+            class="d-flex flex-column justify-content-center timelineWidth w-100 mx-auto pt-4"
+          >
+            <div class="row align-items-center">
+              <div class="col-2"></div>
+              <div class="API-title col-8"></div>
+              <div class="col-2"></div>
             </div>
-                
-              
-            <!--Right part of main-->
-            <div class="col-2">
-            </div>
+          </div>
         </div>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="staticBackdrop"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                  Edit Post
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form id="editPost" data-bs-id="${postData.id}">
+                  <div class="form-group mb-3">
+                    <label for="">Title</label>
+                    <input type="text" class="form-control" name="title" />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="">Body</label>
+                    <textarea class="form-control" name="body"></textarea>
+                  </div>
+                  <!-- <div class="form-group mb-3">
+                            <label for="">Tags</label>
+                            <input type="text" class="form-control" name="tags">
+                        </div> -->
+                  <div class="form-group mb-3">
+                    <label for="">Media</label>
+                    <input type="url" class="form-control" name="media" />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Update Post
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        `
+
+        <!--Right part of main-->
+        <div class="col-2"></div>
+      </div>
     </div>
-
-
-</body>
+  </body>
 </html>

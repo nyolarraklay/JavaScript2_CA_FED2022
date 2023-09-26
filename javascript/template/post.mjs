@@ -1,5 +1,8 @@
-import * as storage from "../storage/index.mjs"
-import {getPosts} from "../Post/get.mjs";
+import * as storage from "../storage/index.mjs";
+import { getPosts } from "../Post/get.mjs";
+import { getPost } from "../Post/get.mjs";
+import { updatePost } from "../Post/update.mjs";
+import { setUpdatePostListener } from "../../javascript/updatePost.mjs";
 
 export function postTemplate(postData) {
   const timeLinePosts = document.createElement("div");
@@ -15,10 +18,10 @@ export function postTemplate(postData) {
   image.classList.add("rounded-circle");
   image.classList.add("avatar");
   image.src = "https://source.unsplash.com/random/30";
-  
+
   const user = document.createElement("div");
   user.classList.add("ms-2");
-  
+
   const post = document.createElement("h5");
   post.classList.add("post");
   post.classList.add("card-title");
@@ -29,80 +32,123 @@ export function postTemplate(postData) {
   date.classList.add("fs-8");
   date.classList.add("m-0");
   date.classList.add("text-body-secondary");
-  date.innerText = postData.updated
+  date.innerText = postData.updated;
 
-user.append(post,date)
-userImageAndName.append(image,user)
+  user.append(post, date);
+  userImageAndName.append(image, user);
 
   const postBody = document.createElement("p");
   postBody.classList.add("post");
   postBody.classList.add("card-text");
   postBody.innerText = postData.body;
 
-  if ((postData.media !== undefined)) {
+  const editContainer = document.createElement("div");
+  editContainer.classList.add("dotIcon");
+  const icon = document.createElement("i");
+  icon.classList.add("modalOne");
+  icon.classList.add("bi");
+  icon.classList.add("bi-three-dots");
+  icon.dataset.bsToggle = "modal";
+  icon.dataset.bsTarget = "#staticBackdrop";
+  icon.dataset.bsId = postData.id;
+  editContainer.append(icon);
+
+  const cardTop = document.createElement("div");
+  cardTop.classList.add("d-flex");
+  cardTop.classList.add("justify-content-between");
+
+  if (postData.media !== undefined) {
     const img = document.createElement("img");
-    img.classList.add("card-img-bottom")
+    img.classList.add("card-img-bottom");
     img.src = postData.media;
     img.alt = `Image from ${postData.title}`;
-    cardBody.append(userImageAndName);
+    cardTop.append(userImageAndName, editContainer);
+    cardBody.append(cardTop);
     cardBody.append(postBody);
     cardBody.append(img);
     timeLinePosts.append(cardBody);
-    return timeLinePosts
-  } 
-}
-
-export function renderPostTemplate(postData, parent) {
-  parent.append(postTemplate(postData));
+    setUpdatePostListener(icon);
+    return timeLinePosts;
+  }
 }
 
 export async function renderPostTemplates() {
- try {
- const publish = await getPosts();
- const publishContent = publish.map(postTemplate);
- const container = document.querySelector(".API-title");
- 
-        container.append(...publishContent);
- } 
- catch (error) {
-  error
- }
+  try {
+    const publish = await getPosts();
+    const publishContent = publish.map(postTemplate);
+    const container = document.querySelector(".API-title");
+
+    container.append(...publishContent);
+
+    userIcon();
+    redirectToPost();
+  } catch (error) {
+    error;
+  }
 }
 
-renderPostTemplates()
+export async function renderPostTemplate() {
+  try {
+    const publish = await getPost(1730);
+    const container = document.querySelector(".API-title");
 
+    container.append(postTemplate(publish));
+    userIcon();
+
+    // redirectToPost();
+  } catch (error) {
+    error;
+  }
+}
 
 export function userIcon() {
   const profilePic = storage.load("profile");
   const userPicture = document.querySelector(".profileName");
 
-      userPicture.innerHTML = profilePic.name
-      
-  
+  userPicture.innerHTML = profilePic.name;
+
   const userName = document.querySelector(".userName");
-       userName.innerHTML = profilePic.name
+  userName.innerHTML = profilePic.name;
 
   const userBanner = document.querySelector(".userBanner");
- const userImage = document.createElement("img");
- userImage.src = profilePic.banner
- userBanner.prepend(userImage)
- 
- const userAvatar = document.querySelector(".userAvatar");
- const avatar = document.createElement("img");
- avatar.src = profilePic.avatar
- userAvatar.prepend(avatar)
+  const userImage = document.createElement("img");
+  userImage.src = profilePic.banner;
+  userBanner.prepend(userImage);
 
- const userEmail = document.querySelector(".userEmail");
-       userEmail.innerHTML = profilePic.email
-  
-    
-      
+  const userAvatar = document.querySelector(".userAvatar");
+  const avatar = document.createElement("img");
+  avatar.src = profilePic.avatar;
+  userAvatar.prepend(avatar);
+
+  const userEmail = document.querySelector(".userEmail");
+  userEmail.innerHTML = profilePic.email;
 }
 
-userIcon()
-
-export function redirectToHome() {
-  location.href ="../../posts/index.html";
-  
+export function redirectToHome(postData) {
+  location.href = "../../posts/index.html";
 }
 
+export async function editPost() {
+  const form = document.querySelector("#editPost");
+  console.log(form);
+  // if (form) {
+  //   form.addEventListener("submit", (event) => {
+  //     const form = event.target;
+  //     console.log(form);
+  //     const dataSet = form.dataset;
+  //     const id = dataSet.bsId;
+  //     console.log(id);
+  //     const post = getPost(id);
+
+  //     form.title.value = post.title;
+  //     form.body.value = post.body;
+  //     form.media.value = post.media;
+
+  //     const formData = new FormData(form);
+  //     const postUpdate = Object.fromEntries(formData.entries());
+  //     postUpdate.id = id;
+
+  //     // updatePost(postUpdate);
+  //   });
+  // }
+}
