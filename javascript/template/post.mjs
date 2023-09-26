@@ -1,5 +1,5 @@
 import * as storage from "../storage/index.mjs";
-import { getPosts } from "../Post/get.mjs";
+import { getPostByUser, getPosts } from "../Post/get.mjs";
 import { getPost } from "../Post/get.mjs";
 import { updatePost } from "../Post/update.mjs";
 import { setUpdatePostListener } from "../../javascript/updatePost.mjs";
@@ -88,18 +88,31 @@ export async function renderPostTemplates() {
 }
 
 export async function renderPostTemplate() {
-  try {
-    const publish = await getPost(1730);
+  const userProfileName = storage.load("profile");
+  const userName = userProfileName.name;
+    const publish = await getPostByUser();
+    for (let i = 0; i < publish.length; i++) {
+      const userPostAuthors = publish[i].author;
+      
+      const users = userPostAuthors.name;
+    }
+
+    let filteredPublish = publish.filter((user) => {
+      return user.author.name === userName
+    })
+  
+   
+    const publishContent = filteredPublish.map(postTemplate);
     const container = document.querySelector(".API-title");
 
-    container.append(postTemplate(publish));
+    container.append(...publishContent);
     userIcon();
 
-    // redirectToPost();
-  } catch (error) {
-    error;
-  }
 }
+    
+
+    
+ 
 
 export function userIcon() {
   const profilePic = storage.load("profile");
@@ -125,30 +138,5 @@ export function userIcon() {
 }
 
 export function redirectToHome(postData) {
-  location.href = "../../posts/index.html";
-}
-
-export async function editPost() {
-  const form = document.querySelector("#editPost");
-  console.log(form);
-  // if (form) {
-  //   form.addEventListener("submit", (event) => {
-  //     const form = event.target;
-  //     console.log(form);
-  //     const dataSet = form.dataset;
-  //     const id = dataSet.bsId;
-  //     console.log(id);
-  //     const post = getPost(id);
-
-  //     form.title.value = post.title;
-  //     form.body.value = post.body;
-  //     form.media.value = post.media;
-
-  //     const formData = new FormData(form);
-  //     const postUpdate = Object.fromEntries(formData.entries());
-  //     postUpdate.id = id;
-
-  //     // updatePost(postUpdate);
-  //   });
-  // }
+  location.href = "../../post/index.html";
 }

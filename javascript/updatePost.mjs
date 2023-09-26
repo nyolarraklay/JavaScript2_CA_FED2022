@@ -11,16 +11,7 @@ export async function setUpdatePostListener(icon) {
     const id = dataSet.bsId;
 
     if (form) {
-      const button = form.querySelector("button");
-      button.disabled = true;
-
-      const post = getPost(id);
-
-      form.title.value = post.title;
-      form.body.value = post.body;
-
-      button.disabled = false;
-
+     
       form.addEventListener("submit", (event) => {
         event.preventDefault();
         const form = event.target;

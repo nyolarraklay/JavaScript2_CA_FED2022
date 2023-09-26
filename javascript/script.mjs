@@ -21,3 +21,7 @@ if (path === "/profile/log-in/index.html") {
 if (path === "/posts/index.html") {
   template.renderPostTemplates();
 }
+
+if (path === "/post/index.html") {
+    template.renderPostTemplate();
+  }
