@@ -116,9 +116,7 @@ export async function renderPostTemplate() {
 
 export function userIcon() {
   const profilePic = storage.load("profile");
-  const userPicture = document.querySelector(".profileName");
-
-  userPicture.innerHTML = profilePic.name;
+  
 
   const userName = document.querySelector(".userName");
   userName.innerHTML = profilePic.name;

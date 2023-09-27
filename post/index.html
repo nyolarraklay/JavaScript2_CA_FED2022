@@ -18,156 +18,158 @@
 
     <title>Friendstegram | Create Post</title>
   </head>
-  <body bg-light>
-    <div class="bg-white d-flex align-items-center fixed-top shadow">
-      <div class="container-fluid">
-        <div class="row align-items-center">
-          <!--left-side-->
-          <div class="col d-flex align-items-center">
-            <a
-              href="../posts/index.html"
-              class="text-decoration-none fs-3 text-primary m-0 brandName"
-            >
-              Friendstegram</a
-            >
-          </div>
-          <!--right-side-->
-          <div class="col d-flex justify-content-end">
-            <div class="d-md-flex align-items-center justify-content-center">
-              <img
-                src="https://source.unsplash.com/random/4"
-                alt="user image"
-                class="rounded-circle me-1 avatar"
-              />
-              <a href="#" class="m-0 text-decoration-none profileName"
-                >JohnWick</a
-              >
-            </div>
+  <body bg-light class="container">
+    <div class="row">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand text-primary" href="#">Friendstegram</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-    </div>
-    <!--main-->
-    <div class="container-fluid mt-5">
-      <div class="row">
-        <!--left part of main-->
-        <div class="col-2"></div>
-        <!--Timeline-center-->
-        <div class="col-8">
-          <div class="panel">
-            <div class="cover-photo">
-              <div class="socialApp-timeline-img userBanner"></div>
-              <div class="socialAPP-name">
-                <h2 class="userName">Name</h2>
+      </nav>
+  
+      <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="panel">
+              <div class="cover-photo">
+                <div class="socialApp-timeline-img userBanner"></div>
+                <div class="socialAPP-name">
+                  <h2 class="userName">Name</h2>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="profile-thumb userAvatar"></div>
+                <a href="#" class="socialAPP-user-mail userEmail">email</a>
               </div>
             </div>
-            <div class="panel-body">
-              <div class="profile-thumb userAvatar"></div>
-              <a href="#" class="socialAPP-user-mail userEmail">email</a>
+            <div class="panel profile-info">
+              <form id="createPost">
+                <div class="form-group">
+                  <label for="" class="d-none">Title</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="title"
+                    required
+                    placeholder="Title"
+                  />
+                </div>
+                <div class="form-group my-1">
+                  <label for="" class="d-none">Body</label>
+                  <textarea
+                    class="form-control p-text-area input-lg"
+                    name="body"
+                    required
+                    placeholder="Whats in your mind today?"
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="" class="d-none">Media</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    name="media"
+                    placeholder="Image"
+                    title="url domains only"
+                  />
+                </div>
+                <button type="submit" class="btn btn-info pull-right">
+                  Post
+                </button>
+              </form>
+            </div>
+            <div
+              class="d-flex flex-column justify-content-center timelineWidth w-100 mx-auto pt-4"
+            >
+              <div class="row align-items-center">
+                <div class="col-2"></div>
+                <div class="API-title col-8"></div>
+                <div class="col-2"></div>
+              </div>
             </div>
           </div>
-          <div class="panel profile-info">
-            <form id="createPost">
-              <div class="form-group">
-                <label for="" class="d-none">Title</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="title"
-                  required
-                  placeholder="Title"
-                />
-              </div>
-              <div class="form-group">
-                <label for="" class="d-none">Body</label>
-                <textarea
-                  class="form-control p-text-area input-lg"
-                  name="body"
-                  required
-                  placeholder="Whats in your mind today?"
-                ></textarea>
-              </div>
-              <div class="form-group">
-                <label for="" class="d-none">Media</label>
-                <input
-                  type="url"
-                  class="form-control"
-                  name="media"
-                  placeholder="Image"
-                  title="url domains only"
-                />
-              </div>
-              <button type="submit" class="btn btn-info pull-right">
-                Post
-              </button>
-            </form>
-          </div>
-
+          <!-- Modal -->
           <div
-            class="d-flex flex-column justify-content-center timelineWidth w-100 mx-auto pt-4"
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
           >
-            <div class="row align-items-center">
-              <div class="col-2"></div>
-              <div class="API-title col-8"></div>
-              <div class="col-2"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Modal -->
-        <div
-          class="modal fade"
-          id="staticBackdrop"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-          tabindex="-1"
-          aria-labelledby="staticBackdropLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                  Edit Post
-                </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <form id="editPost" data-bs-id="${postData.id}">
-                  <div class="form-group mb-3">
-                    <label for="">Title</label>
-                    <input type="text" class="form-control" name="title" />
-                  </div>
-                  <div class="form-group mb-3">
-                    <label for="">Body</label>
-                    <textarea class="form-control" name="body"></textarea>
-                  </div>
-                  <!-- <div class="form-group mb-3">
-                            <label for="">Tags</label>
-                            <input type="text" class="form-control" name="tags">
-                        </div> -->
-                  <div class="form-group mb-3">
-                    <label for="">Media</label>
-                    <input type="url" class="form-control" name="media" />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Update Post
-                  </button>
-                </form>
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    Edit Post
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form id="editPost" data-bs-id="${postData.id}">
+                    <div class="form-group mb-3">
+                      <label for="">Title</label>
+                      <input type="text" class="form-control" name="title" />
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="">Body</label>
+                      <textarea class="form-control" name="body"></textarea>
+                    </div>
+                    <!-- <div class="form-group mb-3">
+                              <label for="">Tags</label>
+                              <input type="text" class="form-control" name="tags">
+                          </div> -->
+                    <div class="form-group mb-3">
+                      <label for="">Media</label>
+                      <input type="url" class="form-control" name="media" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                      Update Post
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        `
-
-        <!--Right part of main-->
-        <div class="col-2"></div>
       </div>
+
+
     </div>
+
+
+
+     
+  
   </body>
 </html>
