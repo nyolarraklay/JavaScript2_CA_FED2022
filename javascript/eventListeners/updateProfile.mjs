@@ -1,7 +1,8 @@
-import { getProfile, updateProfile } from "./profile/index.mjs"
+import { getProfile, updateProfile } from "../profile/index.mjs"
+import * as storage from "../storage/index.mjs"
 
-import { load } from "./storage/index.mjs"
-
+import { load } from "../storage/index.mjs"
+import { redirectToHome } from "../template/post.mjs";
 
 export async function setUpdateProfileListener() {
     const form = document.querySelector('#editProfile');
@@ -11,7 +12,7 @@ export async function setUpdateProfileListener() {
         form.name.value = name;
         form.email.value = email;
 
-        const button= form.querySelector("button");
+        const button= form.querySelector(".profileButton");
         button.disabled = true;
 
         const profile = await getProfile(name);
@@ -32,9 +33,31 @@ export async function setUpdateProfileListener() {
             profile.name = name;
             profile.email = email;
            
-        
-            updateProfile(profile)
+            updateProfile(profile);
+           
+            wait(500)
+            storage.remove ("profil");
+          wait(500)
+            storage.save("profile", profile);
+            wait(500)
+            redirectToHome()
+            
         })
     }
 
 }
+
+// await wait(500)
+// remove ("profil");
+// await wait(500)
+
+// save("profile", profile);
+
+function wait(time) {
+    return new Promise (function (res) {
+      setTimeout(res, time)
+    })
+  };
+
+ 
+

@@ -7,17 +7,25 @@ const action = "/api/v1/social/posts";
 export async function updatePost(updatePostData) {
   const updatePostsURL = `${API_BASE_URL}${action}/${updatePostData.id}`;
 
-  const response = await fetchTokens(updatePostsURL, {
-    method: "PUT",
-    body: JSON.stringify(updatePostData),
-  });
-  const update = await response.json();
-
-  // return update;
-
-  if (response.status === 200) {
-    template.redirectToHome();
-  } else {
-    console.warn("you are not allowed to edit this post");
+  try {
+    const response = await fetchTokens(updatePostsURL, {
+      method: "PUT",
+      body: JSON.stringify(updatePostData),
+    });
+  
+    if (response.ok) {
+      const update = await response.json();
+      location.reload()
+      return update
+    }
+  else {
+    alert ("You are not allowed to edit other user's post")
   }
+
+} catch (error){
+console.error("forbidden");
 }
+};
+
+
+

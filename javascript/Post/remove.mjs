@@ -14,6 +14,12 @@ export async function removePost(id) {
     const remove = await response.json();
 
     
-    return remove;
+   if (response.ok) {
+    
+    return remove
 
+ 
+   } else {
+    alert ("You are forbidden to delete other user's post")
+   }
 }

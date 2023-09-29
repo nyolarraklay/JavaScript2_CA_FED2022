@@ -1,4 +1,4 @@
-import { registerToAPI } from "./api/authentication.mjs";
+import { registerToAPI } from "../api/authentication.mjs";
 
 export function setRegisterFormListener() {
     const form = document.querySelector('#signUpForm');

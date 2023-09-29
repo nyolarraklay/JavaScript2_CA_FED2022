@@ -1,8 +1,9 @@
 import * as storage from "../storage/index.mjs";
 import { getPostByUser, getPosts } from "../Post/get.mjs";
-import { getPost } from "../Post/get.mjs";
-import { updatePost } from "../Post/update.mjs";
-import { setUpdatePostListener } from "../../javascript/updatePost.mjs";
+import * as listeners from "../eventListeners/index.mjs";
+
+
+
 
 export function postTemplate(postData) {
   const timeLinePosts = document.createElement("div");
@@ -51,7 +52,15 @@ export function postTemplate(postData) {
   icon.dataset.bsToggle = "modal";
   icon.dataset.bsTarget = "#staticBackdrop";
   icon.dataset.bsId = postData.id;
-  editContainer.append(icon);
+  const deleteIcon = document.createElement("i");
+  deleteIcon.classList.add("ms-3");
+  deleteIcon.classList.add("bi");
+  deleteIcon.classList.add("bi-x");
+  deleteIcon.dataset.bsId = postData.id;
+  
+  editContainer.append(icon, deleteIcon);
+
+  
 
   const cardTop = document.createElement("div");
   cardTop.classList.add("d-flex");
@@ -67,21 +76,25 @@ export function postTemplate(postData) {
     cardBody.append(postBody);
     cardBody.append(img);
     timeLinePosts.append(cardBody);
-    setUpdatePostListener(icon);
+    listeners.setUpdatePostListener(icon);
+    listeners.deletePostListener(deleteIcon);
+   
+    
     return timeLinePosts;
   }
 }
+
+
 
 export async function renderPostTemplates() {
   try {
     const publish = await getPosts();
     const publishContent = publish.map(postTemplate);
     const container = document.querySelector(".API-title");
-
     container.append(...publishContent);
 
     userIcon();
-    redirectToPost();
+
   } catch (error) {
     error;
   }
@@ -135,6 +148,10 @@ export function userIcon() {
   userEmail.innerHTML = profilePic.email;
 }
 
+
 export function redirectToHome(postData) {
-  location.href = "../../post/index.html";
+  location.href = "../../posts/index.html";
 }
+
+
+

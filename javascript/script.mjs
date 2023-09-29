@@ -1,27 +1,42 @@
-import { setRegisterFormListener } from "./register.mjs";
-import { setLogInFormListener } from "./api/logInListener.mjs";
-import { setCreatePostListener } from "./createPosts.mjs";
-import { setUpdatePostListener } from "./updatePost.mjs";
-import { setUpdateProfileListener } from "./updateProfile.mjs";
-import * as post from "./Post/index.mjs";
+
+import * as listeners from "./eventListeners/index.mjs"
 import * as template from "./template/index.mjs";
-import * as storage from "./storage/index.mjs";
+import * as clickElement from "./clickListeners/index.mjs"
+import { removePost } from "./Post/remove.mjs";
 
-setRegisterFormListener();
-setCreatePostListener();
 
-setUpdateProfileListener();
+
+
 
 const path = location.pathname;
 
 if (path === "/profile/log-in/index.html") {
-  setLogInFormListener();
+  listeners.setLogInFormListener();
+  listeners.setRegisterFormListener();
 }
 
 if (path === "/posts/index.html") {
-  template.renderPostTemplates();
+  listeners.setCreatePostListener();
+template.renderPostTemplates();
+clickElement.clickProfile();
+clickElement.clickEditProfile();
+clickElement.clickLogOut();
+clickElement.clickHome();
+
+
 }
 
 if (path === "/post/index.html") {
-    template.renderPostTemplate();
+  listeners.setCreatePostListener();
+  template.renderPostTemplate();
+  clickElement.clickProfile();
+clickElement.clickEditProfile();
+clickElement.clickLogOut();
+clickElement.clickHome();
   }
+
+
+if (path === "/profile/edit/index.html") {
+  listeners.setUpdateProfileListener();
+  }
+

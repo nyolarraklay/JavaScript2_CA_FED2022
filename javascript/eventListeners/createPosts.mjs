@@ -1,5 +1,6 @@
-import * as template from "./template/index.mjs";
-import { createPost } from "./Post/create.mjs";
+import * as template from "../template/index.mjs";
+import { createPost, waitBeforeExecute } from "../Post/create.mjs";
+
 
 export function setCreatePostListener() {
   const form = document.querySelector("#createPost");
@@ -12,8 +13,12 @@ export function setCreatePostListener() {
       const formData = new FormData(form);
       const post = Object.fromEntries(formData.entries());
 
-      createPost(post);
-      template.redirectToHome();
+      waitBeforeExecute(post);
+    
     });
+   
   }
+  
 }
+
+
