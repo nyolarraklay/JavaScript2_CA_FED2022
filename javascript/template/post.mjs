@@ -1,9 +1,6 @@
 import * as storage from "../storage/index.mjs";
-import { getPostByUser, getPosts } from "../Post/get.mjs";
+import { getPostByUser, getPosts, getPost } from "../Post/get.mjs";
 import * as listeners from "../eventListeners/index.mjs";
-
-
-
 
 export function postTemplate(postData) {
   const timeLinePosts = document.createElement("div");
@@ -57,10 +54,8 @@ export function postTemplate(postData) {
   deleteIcon.classList.add("bi");
   deleteIcon.classList.add("bi-x");
   deleteIcon.dataset.bsId = postData.id;
-  
-  editContainer.append(icon, deleteIcon);
 
-  
+  editContainer.append(icon, deleteIcon);
 
   const cardTop = document.createElement("div");
   cardTop.classList.add("d-flex");
@@ -71,6 +66,7 @@ export function postTemplate(postData) {
     img.classList.add("card-img-bottom");
     img.src = postData.media;
     img.alt = `Image from ${postData.title}`;
+    img.dataset.bsId = postData.id;
     cardTop.append(userImageAndName, editContainer);
     cardBody.append(cardTop);
     cardBody.append(postBody);
@@ -78,13 +74,10 @@ export function postTemplate(postData) {
     timeLinePosts.append(cardBody);
     listeners.setUpdatePostListener(icon);
     listeners.deletePostListener(deleteIcon);
-   
-    
+    listeners.redirectToDetails(img);
     return timeLinePosts;
   }
 }
-
-
 
 export async function renderPostTemplates() {
   try {
@@ -94,7 +87,6 @@ export async function renderPostTemplates() {
     container.append(...publishContent);
 
     userIcon();
-
   } catch (error) {
     error;
   }
@@ -103,33 +95,26 @@ export async function renderPostTemplates() {
 export async function renderPostTemplate() {
   const userProfileName = storage.load("profile");
   const userName = userProfileName.name;
-    const publish = await getPostByUser();
-    for (let i = 0; i < publish.length; i++) {
-      const userPostAuthors = publish[i].author;
-      
-      const users = userPostAuthors.name;
-    }
+  const publish = await getPostByUser();
+  for (let i = 0; i < publish.length; i++) {
+    const userPostAuthors = publish[i].author;
 
-    let filteredPublish = publish.filter((user) => {
-      return user.author.name === userName
-    })
-  
-   
-    const publishContent = filteredPublish.map(postTemplate);
-    const container = document.querySelector(".API-title");
+    const users = userPostAuthors.name;
+  }
 
-    container.append(...publishContent);
-    userIcon();
+  let filteredPublish = publish.filter((user) => {
+    return user.author.name === userName;
+  });
 
+  const publishContent = filteredPublish.map(postTemplate);
+  const container = document.querySelector(".API-title");
+
+  container.append(...publishContent);
+  userIcon();
 }
-    
-
-    
- 
 
 export function userIcon() {
   const profilePic = storage.load("profile");
-  
 
   const userName = document.querySelector(".userName");
   userName.innerHTML = profilePic.name;
@@ -148,10 +133,21 @@ export function userIcon() {
   userEmail.innerHTML = profilePic.email;
 }
 
+export async function renderDetailPostTemplate() {
+  const queryString = document.location.search;
+  const params = new URLSearchParams(queryString);
+  const id = params.get("id");
+  
+  const postData = await getPost(id);
+  console.log(postData);
+
+  const container = document.querySelector(".API-title");
+
+  container.append(postTemplate(postData))
+  
+ 
+}
 
 export function redirectToHome(postData) {
   location.href = "../../posts/index.html";
 }
-
-
-

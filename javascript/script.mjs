@@ -1,12 +1,6 @@
-
-import * as listeners from "./eventListeners/index.mjs"
+import * as listeners from "./eventListeners/index.mjs";
 import * as template from "./template/index.mjs";
-import * as clickElement from "./clickListeners/index.mjs"
-import { removePost } from "./Post/remove.mjs";
-
-
-
-
+import * as clickElement from "./clickListeners/index.mjs";
 
 const path = location.pathname;
 
@@ -17,26 +11,28 @@ if (path === "/profile/log-in/index.html") {
 
 if (path === "/posts/index.html") {
   listeners.setCreatePostListener();
-template.renderPostTemplates();
-clickElement.clickProfile();
-clickElement.clickEditProfile();
-clickElement.clickLogOut();
-clickElement.clickHome();
-
-
+  template.renderPostTemplates();
+  clickElement.clickProfile();
+  clickElement.clickEditProfile();
+  clickElement.clickLogOut();
+  clickElement.clickHome();
 }
 
 if (path === "/post/index.html") {
   listeners.setCreatePostListener();
   template.renderPostTemplate();
   clickElement.clickProfile();
-clickElement.clickEditProfile();
-clickElement.clickLogOut();
-clickElement.clickHome();
-  }
-
+  clickElement.clickEditProfile();
+  clickElement.clickLogOut();
+  clickElement.clickHome();
+}
 
 if (path === "/profile/edit/index.html") {
   listeners.setUpdateProfileListener();
-  }
+}
 
+// if (path === "/profile/edit/index.html?id=") {
+//   template.renderDetailPostTemplate();
+// }
+template.renderDetailPostTemplate();
+  
