@@ -36,3 +36,5 @@ if (path === "/profile/edit/index.html") {
 if (path ===  "/posts/UserPost/index.html"){
   template.renderDetailPostTemplate()
 } 
+
+

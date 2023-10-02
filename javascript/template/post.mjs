@@ -1,6 +1,12 @@
 import * as storage from "../storage/index.mjs";
-import { getPostByUser, getPosts, getPost, getPostByOtherUser } from "../Post/get.mjs";
+import {
+  getPostByUser,
+  getPosts,
+  getPost,
+  getPostByOtherUser,
+} from "../Post/get.mjs";
 import * as listeners from "../eventListeners/index.mjs";
+import * as sort from "../sort/index.mjs";
 
 export function postTemplate(postData) {
   const timeLinePosts = document.createElement("div");
@@ -87,6 +93,26 @@ export async function renderPostTemplates() {
     const container = document.querySelector(".API-title");
     container.append(...publishContent);
 
+
+    const sortDropdown = document.querySelector("p.oldestSort");
+    sortDropdown.addEventListener("click", function (event) {
+      event.preventDefault();
+      const sortedPost = sort.sortPostsOldestToNewest(publish);
+      const sortedPostContent = sortedPost.map(postTemplate);
+      container.innerHTML = "";
+      container.append(...sortedPostContent);
+    });
+
+
+    const sortDropdownNewest = document.querySelector("p.newestSort");
+    sortDropdownNewest.addEventListener("click", function (event) {
+      event.preventDefault();
+      const sortedPost = sort.sortPostsNewestToOldest(publish);
+      const sortedPostContent = sortedPost.map(postTemplate);
+      container.innerHTML = "";
+      container.append(...sortedPostContent);
+    });
+
     userIcon();
   } catch (error) {
     error;
@@ -137,19 +163,14 @@ export function userIcon() {
 export async function renderDetailPostTemplate() {
   const queryString = document.location.search;
   const params = new URLSearchParams(queryString);
-  
-  
+
   const id = params.get("id");
   const postData = await getPost(id);
   const container = document.querySelector(".API-title");
 
-  
-     container.append(postTemplate(postData))
-     otherUserIcon()
-
-  }
-
-
+  container.append(postTemplate(postData));
+  otherUserIcon();
+}
 
 export function redirectToHome(postData) {
   location.href = "../../posts/index.html";
@@ -160,33 +181,26 @@ export async function otherUserIcon() {
   const params = new URLSearchParams(queryString);
   const id = params.get("id");
   const publish = await getPostByOtherUser(id);
-  const author = publish.author
-  
+  const author = publish.author;
 
-    const users = author.name;
-    const banner = author.banner;
-    const avatarUser = author.avatar;
-    const eMail = author.email
+  const users = author.name;
+  const banner = author.banner;
+  const avatarUser = author.avatar;
+  const eMail = author.email;
 
-    const userName = document.querySelector(".userName");
-    userName.innerHTML = users;
+  const userName = document.querySelector(".userName");
+  userName.innerHTML = users;
 
+  const userBanner = document.querySelector(".userBanner");
+  const userImage = document.createElement("img");
+  userImage.src = banner;
+  userBanner.prepend(userImage);
 
-  
-    const userBanner = document.querySelector(".userBanner");
-    const userImage = document.createElement("img");
-    userImage.src = banner;
-    userBanner.prepend(userImage);
-  
-    const userAvatar = document.querySelector(".userAvatar");
-    const avatar = document.createElement("img");
-    avatar.src = avatarUser;
-    userAvatar.prepend(avatar);
-  
-    const userEmail = document.querySelector(".userEmail");
-    userEmail.innerHTML = eMail;
+  const userAvatar = document.querySelector(".userAvatar");
+  const avatar = document.createElement("img");
+  avatar.src = avatarUser;
+  userAvatar.prepend(avatar);
 
+  const userEmail = document.querySelector(".userEmail");
+  userEmail.innerHTML = eMail;
 }
-
-
-
