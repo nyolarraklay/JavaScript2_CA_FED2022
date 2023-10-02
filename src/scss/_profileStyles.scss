@@ -24,7 +24,7 @@
 }
 
 .profile-info .panel-footer ul li a {
-  color: #7a7a7a;
+  color: black;
 }
 
 .profile-thumb {
@@ -51,7 +51,6 @@
   bottom: 5px;
   left: 175px;
   position: absolute;
-  color: antiquewhite
 }
 
 .form-control:disabled {
@@ -69,6 +68,6 @@
   max-width: 680px;
 }
 
-nav li {
+nav li p{
   cursor: pointer;
 }

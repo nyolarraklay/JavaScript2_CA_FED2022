@@ -1,5 +1,5 @@
 import * as storage from "../storage/index.mjs";
-import { getPostByUser, getPosts, getPost } from "../Post/get.mjs";
+import { getPostByUser, getPosts, getPost, getPostByOtherUser } from "../Post/get.mjs";
 import * as listeners from "../eventListeners/index.mjs";
 
 export function postTemplate(postData) {
@@ -60,21 +60,22 @@ export function postTemplate(postData) {
   const cardTop = document.createElement("div");
   cardTop.classList.add("d-flex");
   cardTop.classList.add("justify-content-between");
+  const imageContainer = document.createElement("a");
+  imageContainer.href = `/posts/UserPost/index.html?id=${postData.id}`;
 
   if (postData.media !== undefined) {
     const img = document.createElement("img");
     img.classList.add("card-img-bottom");
     img.src = postData.media;
     img.alt = `Image from ${postData.title}`;
-    img.dataset.bsId = postData.id;
     cardTop.append(userImageAndName, editContainer);
     cardBody.append(cardTop);
     cardBody.append(postBody);
-    cardBody.append(img);
+    imageContainer.append(img);
+    cardBody.append(imageContainer);
     timeLinePosts.append(cardBody);
     listeners.setUpdatePostListener(icon);
     listeners.deletePostListener(deleteIcon);
-    listeners.redirectToDetails(img);
     return timeLinePosts;
   }
 }
@@ -136,18 +137,56 @@ export function userIcon() {
 export async function renderDetailPostTemplate() {
   const queryString = document.location.search;
   const params = new URLSearchParams(queryString);
-  const id = params.get("id");
   
+  
+  const id = params.get("id");
   const postData = await getPost(id);
-  console.log(postData);
-
   const container = document.querySelector(".API-title");
 
-  container.append(postTemplate(postData))
   
- 
-}
+     container.append(postTemplate(postData))
+     otherUserIcon()
+
+  }
+
+
 
 export function redirectToHome(postData) {
   location.href = "../../posts/index.html";
 }
+
+export async function otherUserIcon() {
+  const queryString = document.location.search;
+  const params = new URLSearchParams(queryString);
+  const id = params.get("id");
+  const publish = await getPostByOtherUser(id);
+  const author = publish.author
+  
+
+    const users = author.name;
+    const banner = author.banner;
+    const avatarUser = author.avatar;
+    const eMail = author.email
+
+    const userName = document.querySelector(".userName");
+    userName.innerHTML = users;
+
+
+  
+    const userBanner = document.querySelector(".userBanner");
+    const userImage = document.createElement("img");
+    userImage.src = banner;
+    userBanner.prepend(userImage);
+  
+    const userAvatar = document.querySelector(".userAvatar");
+    const avatar = document.createElement("img");
+    avatar.src = avatarUser;
+    userAvatar.prepend(avatar);
+  
+    const userEmail = document.querySelector(".userEmail");
+    userEmail.innerHTML = eMail;
+
+}
+
+
+

@@ -38,3 +38,15 @@ export async function getPostByUser() {
   
     return getPosts;
 }
+
+export async function getPostByOtherUser(id) {
+    const getPostsURL = `${API_BASE_URL}${action}/${id}${userPost}`;
+   
+    const response = await fetchTokens(getPostsURL,{
+        method: 'GET', 
+    });
+    const getPosts = await response.json();
+
+  
+    return getPosts;
+}
