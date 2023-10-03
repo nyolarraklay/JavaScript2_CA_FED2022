@@ -5,12 +5,12 @@ import * as post from "./Post/index.mjs";
 
 const path = location.pathname;
 
-if (path === "/profile/log-in/index.html") {
+if (path === "/index.html") {
   listeners.setLogInFormListener();
   listeners.setRegisterFormListener();
 }
 
-if (path === "/index.html") {
+if (path === "/posts/index.html") {
   listeners.setCreatePostListener();
   template.renderPostTemplates(template.postTemplate)
   clickElement.clickProfile();
@@ -34,10 +34,11 @@ if (path === "/profile/edit/index.html") {
 
  
 if (path ===  "/posts/UserPost/index.html"){
-  template.renderDetailPostTemplate()
+  template.renderDetailPostTemplate();
+  clickElement.clickProfile();
+  clickElement.clickEditProfile();
+  clickElement.clickLogOut();
+  clickElement.clickHome();
 } 
 
 
-if (path ===  "/posts/filteredHTML/index.html"){
-  template.renderPostFilteredTemplates()
-} 

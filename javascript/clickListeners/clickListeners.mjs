@@ -3,7 +3,7 @@ import { remove } from "../storage/index.mjs";
 export  function clickHome() {
     const home = document.querySelector("#homeLink");
     home.addEventListener("click", function () {
-        document.location.href = "/index.html"
+        document.location.href = "/posts/index.html"
     });
     
 }
@@ -25,7 +25,7 @@ export  function clickEditProfile() {
 export  function clickLogOut() {
     const logOut = document.querySelector(".logInLink");
    logOut.addEventListener("click", function () {
-    document.location.href = "../profile/log-in/index.html";
+    document.location.href = "../index.html";
     remove("profile");
 
 });

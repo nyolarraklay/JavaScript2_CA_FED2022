@@ -1,205 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../dist/scss/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
-    />
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-      crossorigin="anonymous"
-    ></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../dist/scss/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="../../javascript/script.mjs" defer type="module"></script>
+</head>
+<body class="bg-light">
+    <div class="container d-flex justify-content-evenly  flex-column flex-lg-row mt-5 pt-5">
+        <div class="text-center text-lg-start mt-lg-5 pt-lg-5">
+            <h1 class="fw-bold text-primary">Friendstegram</h1>
+            <p class="lead mx-auto mx-lg-0 text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, in!</p>
+        </div>
+        <div class="text-start bg-white shadow rounded p-3 input-group-lg">
+            <form id="loginForm">
+                <label for="email" class="form-label">Email</label>                     
+                <input type="email" class="form-control" id="email" name="email" required>   
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" minlength="8" required>
+                <button type="submit" class="btn btn-primary w-100 my-3">Log In</button>
 
-    <title>Friendstegram | Create Post</title>
-  </head>
-  <body bg-light class="container">
-    <div class="row">
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand text-primary" href="/index.html"
-            >Friendstegram</a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  id="homeLink"
-                  aria-current="page"
-                  href="#"
-                  >Home</a
-                >
-              </li>
-              <li class="nav-item">
-                <p class="profileLink nav-link mb-0">My Profile</p>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Settings
-                </a>
-                <ul class="dropdown-menu">
-                  <li><p class="dropdown-item profileLink">My Profile</p></li>
-                  <li>
-                    <p class="dropdown-item editProfileLink">Edit Profile</p>
-                  </li>
-                  <li><p class="dropdown-item logInLink">Log Out</p></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex" role="search" id="search">
-              <input class="form-control me-2" name="term" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              
+                <hr>
+                <div class="my-4 text-center">
+                    <button type="button" class="btn btn-info btn-lg " data-bs-toggle="modal" data-bs-target="#createModal">Create New Account</button>
+                </div>
             </form>
-          </div>
-          
-          
-        </div>
-      </nav>
-      <!--main-->
-      <div class="container-fluid mt-5">
-        <div>
-        <div class="panel">
-          <div class="cover-photo">
-            <div class="socialApp-timeline-img userBanner"></div>
-            <div class="socialAPP-name">
-              <h2 class="userName">Name</h2>
-            </div>
-          </div>
-          <div class="panel-body">
-            <div class="profile-thumb userAvatar"></div>
-            <a href="#" class="socialAPP-user-mail userEmail">email</a>
-          </div>
-        </div>
-        <div class="panel profile-info">
-          <form id="createPost">
-            <div class="form-group">
-              <label for="" class="d-none">Title</label>
-              <input
-                type="text"
-                class="form-control"
-                name="title"
-                required
-                placeholder="Title"
-              />
-            </div>
-            <div class="form-group my-2">
-              <label for="" class="d-none">Body</label>
-              <textarea
-                class="form-control p-text-area input-lg"
-                name="body"
-                required
-                placeholder="Whats in your mind today?"
-              ></textarea>
-            </div>
-            <div class="form-group">
-              <label for="" class="d-none">Media</label>
-              <input
-                type="url"
-                class="form-control"
-                name="media"
-                placeholder="Image"
-                title="url domains only"
-              />
-            </div>
-            <button type="submit" class="mt-1 btn btn-info pull-right">
-              Post
-            </button>
-          </form>
-        </div>
+                <!-- Modal -->
+                <div 
+                class="modal fade" 
+                id="createModal" 
+                tabindex="-1" 
+                aria-labelledby="createModalLabel" 
+                aria-hidden="true">
 
-        <div class="btn-group mt-3">
-          <button type="button" class="btn btn-danger">Sort by:</button>
-          <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="visually-hidden">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><p class="dropdown-item newestSort" >Newest</p></li>
-            <li><p class="dropdown-item oldestSort" >Oldest</p></li>
-          </ul>
-        </div>
-
-        <div
-          class="d-flex flex-column justify-content-center timelineWidth w-100 mx-auto pt-4"
-        >
-          <div class="row align-items-center">
-            <div class="col-2"></div>
-            <div class="API-title col-8"></div>
-            <div class="col-2"></div>
-          </div>
-        </div>
-
-        <div
-          class="modal fade"
-          id="staticBackdrop"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-          tabindex="-1"
-          aria-labelledby="staticBackdropLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
+                <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                  Edit Post
-                </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <form id="editPost" data-bs-id="${postData.id}">
-                  <div class="form-group mb-3">
-                    <label for="">Title</label>
-                    <input type="text" class="form-control" name="title" />
-                  </div>
-                  <div class="form-group mb-3">
-                    <label for="">Body</label>
-                    <textarea class="form-control" name="body"></textarea>
-                  </div>
-                  <div class="form-group mb-3">
-                    <label for="">Tags</label>
-                    <input type="text" class="form-control" name="tags" />
-                  </div>
-                  <div class="form-group mb-3">
-                    <label for="">Media</label>
-                    <input type="url" class="form-control" name="media" />
-                  </div>
-                  <button type="submit" class="btn btn-primary">
-                    Update Post
-                  </button>
-                </form>
-              </div>
+                <div class="modal-header">
+                    <h2 
+                    class="modal-title fs-5" 
+                    id="createModalLabel">Sign Up
+                    </h2>
+                <button 
+                type="button" 
+                class="btn-close" 
+                data-bs-dismiss="modal" 
+                aria-label="Close">
+                </button>
+                </div>
+                <div class="modal-body">
+                    <form id="signUpForm">
+                        <div class="form-group mb-3">
+                            <label for="">Username</label>
+                            <input type="text" class="form-control" name="name" required pattern="^[\w]+$" title="user name must only contain lower case and upper case letters, numbers, and underscore(_). Example: Mr_Name12332">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" name="email" required pattern="^[\w\-.]+@(stud.)?noroff.no$" title="Only @(stud.)noroff.no domains are allowed to sign up.">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="">Password</label>
+                            <input type="password" class="form-control" name="password" required minlength="8" >
+                        </div>
+                        <button type="submit" 
+                            class="btn btn-primary" >Sign Up
+                        </button>
+                    </form>
+                </div>
             </div>
-          </div>
+                </div>
+                </div>
         </div>
-      </div>
     </div>
-  </body>
+
+<footer class="bg-white p-4 text-muted fixed-bottom w-100 ">
+    <div class="container">
+        <div class="d-flex flex-wrap">
+            <p class="mx-2 fs-8 mb-0">English</p>
+            <p class="mx-2 fs-8 mb-0">Chinese</p>
+            <p class="mx-2 fs-8 mb-0">Korean</p>
+            <p class="mx-2 fs-8 mb-0">Tagalog</p>
+            <p class="mx-2 fs-8 mb-0">Norwegian</p>
+        </div>
+        <div class="d-flex flex-wrap">
+            <p class="mx-2 fs-8 mb-0">Log In</p>
+            <p class="mx-2 fs-8 mb-0">Message</p>
+            <p class="mx-2 fs-8 mb-0">Sign Up</p>
+            <p class="mx-2 fs-8 mb-0">Watch</p>
+        </div>
+        <div class="mt-2 mx-2">
+            <p class="fs-8">&copy; 2023</p>
+        </div>
+    </div>
+</footer>
+</body>
 </html>
