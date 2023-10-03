@@ -50,3 +50,4 @@ export async function getPostByOtherUser(id) {
   
     return getPosts;
 }
+

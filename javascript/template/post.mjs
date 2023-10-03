@@ -1,10 +1,5 @@
 import * as storage from "../storage/index.mjs";
-import {
-  getPostByUser,
-  getPosts,
-  getPost,
-  getPostByOtherUser,
-} from "../Post/get.mjs";
+import * as post from "../Post/index.mjs";
 import * as listeners from "../eventListeners/index.mjs";
 import * as sort from "../sort/index.mjs";
 
@@ -88,7 +83,7 @@ export function postTemplate(postData) {
 
 export async function renderPostTemplates() {
   try {
-    const publish = await getPosts();
+    const publish = await post.getPosts();
     sort.searchPostsSetUp(publish);
     
     const publishContent = publish.map(postTemplate);
@@ -124,7 +119,7 @@ export async function renderPostTemplates() {
 export async function renderPostTemplate() {
   const userProfileName = storage.load("profile");
   const userName = userProfileName.name;
-  const publish = await getPostByUser();
+  const publish = await post.getPostByUser();
   for (let i = 0; i < publish.length; i++) {
     const userPostAuthors = publish[i].author;
 
@@ -167,7 +162,7 @@ export async function renderDetailPostTemplate() {
   const params = new URLSearchParams(queryString);
 
   const id = params.get("id");
-  const postData = await getPost(id);
+  const postData = await post.getPost(id);
   const container = document.querySelector(".API-title");
 
   container.append(postTemplate(postData));
@@ -182,7 +177,7 @@ export async function otherUserIcon() {
   const queryString = document.location.search;
   const params = new URLSearchParams(queryString);
   const id = params.get("id");
-  const publish = await getPostByOtherUser(id);
+  const publish = await post.getPostByOtherUser(id);
   const author = publish.author;
 
   const users = author.name;
@@ -192,6 +187,12 @@ export async function otherUserIcon() {
 
   const userName = document.querySelector(".userName");
   userName.innerHTML = users;
+  const follow = document.createElement("i");
+  follow.classList.add("bi");
+  follow.classList.add("bi-person-fill-add");
+  follow.classList.add("fs-6");
+  follow.classList.add("ms-3");
+  userName.append(follow)
 
   const userBanner = document.querySelector(".userBanner");
   const userImage = document.createElement("img");
@@ -205,5 +206,29 @@ export async function otherUserIcon() {
 
   const userEmail = document.querySelector(".userEmail");
   userEmail.innerHTML = eMail;
+
+
+  follow.addEventListener("click", function(){
+    post.followUser(users);
+    unfollow(follow, users)
+  })
+
+
+}
+
+function unfollow (follow, users){
+  follow.classList.remove("bi-person-fill-add")
+  const unfollow = document.createElement("i");
+  unfollow.classList.add("bi");
+  unfollow.classList.add("bi-person-dash");
+  unfollow.classList.add("fs-5");
+  unfollow.classList.add("ms-3");
+  follow.append(unfollow)
+
+
+  unfollow.addEventListener("click", function(){
+    post.unFollowUser(users);
+    follow.remove(unfollow)
+  })
 }
 
