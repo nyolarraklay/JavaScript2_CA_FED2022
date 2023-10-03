@@ -10,7 +10,7 @@ if (path === "/profile/log-in/index.html") {
   listeners.setRegisterFormListener();
 }
 
-if (path === "/posts/index.html") {
+if (path === "/index.html") {
   listeners.setCreatePostListener();
   template.renderPostTemplates(template.postTemplate)
   clickElement.clickProfile();

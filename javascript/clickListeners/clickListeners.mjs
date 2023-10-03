@@ -3,7 +3,7 @@ import { remove } from "../storage/index.mjs";
 export  function clickHome() {
     const home = document.querySelector("#homeLink");
     home.addEventListener("click", function () {
-        document.location.href = "/posts/index.html"
+        document.location.href = "/index.html"
     });
     
 }
