@@ -38,3 +38,6 @@ if (path ===  "/posts/UserPost/index.html"){
 } 
 
 
+if (path ===  "/posts/filteredHTML/index.html"){
+  template.renderPostFilteredTemplates()
+} 

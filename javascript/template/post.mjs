@@ -89,6 +89,8 @@ export function postTemplate(postData) {
 export async function renderPostTemplates() {
   try {
     const publish = await getPosts();
+    sort.searchPostsSetUp(publish);
+    
     const publishContent = publish.map(postTemplate);
     const container = document.querySelector(".API-title");
     container.append(...publishContent);
@@ -204,3 +206,4 @@ export async function otherUserIcon() {
   const userEmail = document.querySelector(".userEmail");
   userEmail.innerHTML = eMail;
 }
+
