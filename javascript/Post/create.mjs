@@ -33,3 +33,4 @@ export async function waitBeforeExecute(post) {
 
   location.reload();
 }
+

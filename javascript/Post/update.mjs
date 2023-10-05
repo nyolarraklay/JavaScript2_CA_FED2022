@@ -36,7 +36,7 @@ export async function followUser(users) {
       body: JSON.stringify(getPostsURL), 
     
   });
-  
+  console.log(getPostsURL);
 
   if (response.ok) {
     const update = await response.json();
@@ -61,3 +61,34 @@ export async function unFollowUser(users) {
   }
 } 
 
+export async function followUserData(users) {
+  const getPostsURL = `${API_BASE_URL}${profiles}${users}/?_following=true`;
+ 
+  const response = await fetchTokens(getPostsURL,{
+      method: 'get',
+    
+    
+  });
+
+  if (response.ok) {
+    const update = await response.json();
+    
+    return update
+  }
+}
+
+export async function showUserPosts(users) {
+  const getPostsURL = `${API_BASE_URL}${profiles}${users}/?_posts=true&_followers=true&_following=true`;
+ 
+  const response = await fetchTokens(getPostsURL,{
+      method: 'get',
+    
+    
+  });
+
+  if (response.ok) {
+    const update = await response.json();
+    
+    return update
+  }
+}

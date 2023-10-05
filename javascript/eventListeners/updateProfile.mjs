@@ -33,6 +33,8 @@ export async function setUpdateProfileListener() {
             profile.name = name;
             profile.email = email;
            
+console.log(profile);
+        
             updateProfile(profile);
            
             wait(500)
@@ -40,7 +42,7 @@ export async function setUpdateProfileListener() {
           wait(500)
             storage.save("profile", profile);
             wait(500)
-            redirectToHome()
+           
             
         })
     }

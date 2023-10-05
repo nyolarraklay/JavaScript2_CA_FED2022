@@ -18,7 +18,7 @@ export  function clickProfile() {
 export  function clickEditProfile() {
     const editProfile = document.querySelector(".editProfileLink");
     editProfile.addEventListener("click",function () {
-        document.location.href = "../profile/edit/index.html"
+        document.location.href = "../../profile/edit/index.html"
     });
 };
 

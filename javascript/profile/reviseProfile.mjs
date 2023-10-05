@@ -4,15 +4,17 @@ import { save, remove} from "../storage/index.mjs";
 
 const action ="/api/v1/social/profiles";
 
-export async function updateProfile(profileData) {
-    const updateProfileURL = `${API_BASE_URL}${action}/${profileData.name}/media`;
+export async function updateProfile(profile) {
+    const updateProfileURL = `${API_BASE_URL}${action}/${profile.name}/media`;
    
     
     const response = await fetchTokens(updateProfileURL,{
         method: 'PUT',
-        body: JSON.stringify(profileData)
+        body: JSON.stringify(profile)
     });
 
-    console.log(response);
+    const updateProfile = await response.json()
+    
+     return updateProfile
 
 }

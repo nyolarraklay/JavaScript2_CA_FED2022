@@ -86,11 +86,17 @@
                 <div class="socialAPP-name">
                   <h2 class="userName">Name</h2>
                 </div>
+                <div class="followData">
+                  <button class="btn text-primary followers">followers </button>
+                  <button class="btn text-primary following" >following </button>
+                </div>
               </div>
               <div class="panel-body">
                 <div class="profile-thumb userAvatar"></div>
                 <a href="#" class="socialAPP-user-mail userEmail">email</a>
               </div>
+              
+              
             </div>
             <div class="panel profile-info">
               <form id="createPost">
@@ -123,21 +129,12 @@
                     title="url domains only"
                   />
                 </div>
-                <button type="submit" class="btn btn-info pull-right">
+                <button type="submit" class="btn btn-info pull-right mt-2">
                   Post
                 </button>
               </form>
             </div>
-            <div class="btn-group mt-3">
-              <button type="button" class="btn btn-danger">Sort by:</button>
-              <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="visually-hidden">Toggle Dropdown</span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><p class="dropdown-item newestSort" >Newest</p></li>
-                <li><p class="dropdown-item oldestSort" >Oldest</p></li>
-              </ul>
-            </div>
+           
             <div
               class="d-flex flex-column justify-content-center timelineWidth w-100 mx-auto pt-4"
             >
