@@ -25,17 +25,11 @@ export async function createPost(createPostData) {
   return post;
 }
 
-function wait(time) {
-  return new Promise(function (res) {
-    setTimeout(res, time);
-  });
-}
+
 
 export async function waitBeforeExecute(post) {
-  createPost(post);
+  await createPost(post);
 
-  await wait(500);
+ }
 
-  location.reload();
-}
 
