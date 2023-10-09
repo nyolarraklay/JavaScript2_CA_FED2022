@@ -218,6 +218,7 @@ export async function renderPostTemplates() {
       container.innerHTML = "";
       container.append(...sortedPostContent);
     });
+    sort.searchPostsSetUp(publish) 
 
     userIcon();
   } catch (error) {
@@ -243,6 +244,7 @@ try {
   const container = document.querySelector(".API-title");
 
   container.append(...publishContent);
+  sort.searchPostsSetUp(filteredPublish) 
   userIcon();
 } catch (error) {
   alert("Something went wrong");
@@ -397,24 +399,7 @@ const container = document.querySelector(".API-title");
   followerContainer.append(...followersData);
   container.prepend(followerContainer);
   otherUserIcon();
-
-  const sortDropdown = document.querySelector("p.oldestSort");
-  sortDropdown.addEventListener("click", function (event) {
-    event.preventDefault();
-    const sortedPost = sort.sortPostsOldestToNewest(showUserPosts);
-    const sortedPostContent = sortedPost.map(postTemplate);
-    container.innerHTML = "";
-    container.append(...sortedPostContent);
-  });
-
-  const sortDropdownNewest = document.querySelector("p.newestSort");
-  sortDropdownNewest.addEventListener("click", function (event) {
-    event.preventDefault();
-    const sortedPost = sort.sortPostsNewestToOldest(showUserPosts);
-    const sortedPostContent = sortedPost.map(postTemplate);
-    container.innerHTML = "";
-    container.append(...sortedPostContent);
-  });
+ 
 }
 
 export function redirectToHome(postData) {

@@ -1,6 +1,5 @@
 import { fetchTokens } from "../Post/fetchTokens.mjs";
 import { API_BASE_URL } from "../constant/index.mjs";
-import * as template from "../template/index.mjs";
 
 const action = "/api/v1/social/posts";
 const profiles = "/api/v1/social/profiles/";

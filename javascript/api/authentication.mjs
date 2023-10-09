@@ -2,6 +2,9 @@ const API_BASE_URL = "https://api.noroff.dev";
 const action = "/api/v1/social/auth/register";
 const method = "post";
 
+/**
+ * This function will register user to API
+ */
 export async function registerToAPI(profile) {
   const logInURL = API_BASE_URL + action;
 

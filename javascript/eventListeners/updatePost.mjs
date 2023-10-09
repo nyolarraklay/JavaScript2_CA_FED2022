@@ -1,4 +1,3 @@
-import { getPost } from "../Post/get.mjs";
 import { updatePost } from "../Post/update.mjs";
 
 export async function setUpdatePostListener(icon) {

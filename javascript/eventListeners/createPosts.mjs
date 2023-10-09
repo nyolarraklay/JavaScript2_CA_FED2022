@@ -1,5 +1,4 @@
-import * as template from "../template/index.mjs";
-import { createPost, waitBeforeExecute } from "../Post/create.mjs";
+import {waitBeforeExecute } from "../Post/create.mjs";
 
 export function setCreatePostListener() {
   const form = document.querySelector("#createPost");

@@ -1,5 +1,4 @@
 import { removePost } from "../Post/remove.mjs";
-import { API_BASE_URL } from "../constant/index.mjs";
 
 export async function deletePostListener(deleteIcon) {
 try {
