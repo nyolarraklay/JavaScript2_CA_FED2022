@@ -18,3 +18,13 @@ export async function updateProfile(profile) {
      return updateProfile
 
 }
+
+
+export async function waitBeforeExecute(profile) {
+    const result = await updateProfile(profile);
+    if (result) {
+      location.href = "../../posts/index.html";
+    } else {
+      alert("Error");
+    }
+  }

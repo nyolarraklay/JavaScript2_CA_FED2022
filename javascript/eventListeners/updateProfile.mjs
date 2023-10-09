@@ -1,4 +1,4 @@
-import { getProfile, updateProfile } from "../profile/index.mjs";
+import { getProfile, waitBeforeExecute } from "../profile/index.mjs";
 import * as storage from "../storage/index.mjs";
 import { load } from "../storage/index.mjs";
 
@@ -20,7 +20,7 @@ export async function setUpdateProfileListener() {
 
     button.disabled = false;
 
-    form.addEventListener("submit", async (event) => {
+    form.addEventListener("submit", (event) => {
       event.preventDefault();
       const form = event.target;
       const formData = new FormData(form);
@@ -29,7 +29,7 @@ export async function setUpdateProfileListener() {
       profile.name = name;
       profile.email = email;
 
-      await updateProfile(profile);
+      waitBeforeExecute(profile);
     });
   }
 }
