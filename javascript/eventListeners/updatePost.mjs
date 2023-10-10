@@ -11,20 +11,17 @@ export async function setUpdatePostListener(icon) {
     const tags = [];
 
     if (form) {
-     
       form.addEventListener("submit", (event) => {
         try {
           event.preventDefault();
           const form = event.target;
-  
+
           const formData = new FormData(form);
           const post = Object.fromEntries(formData.entries());
           post.id = id;
           post.tags = tags;
           updatePost(post);
-        } catch (error) {
-        }
-       
+        } catch (error) {}
       });
     }
   });

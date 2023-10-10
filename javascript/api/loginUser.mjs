@@ -17,8 +17,7 @@ export async function logIn(userData) {
     },
     method,
     body: JSON.stringify(userData),
-  }
-  );
+  });
 
   const { accessToken, ...user } = await response.json();
   storage.save("token", accessToken);

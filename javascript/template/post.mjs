@@ -107,21 +107,21 @@ export function postTemplate(postData) {
   likeAction.classList.add("align-center");
   const commentBox = document.createElement("div");
   commentBox.classList.add("commentBox");
-  postData.comments.forEach(post => {
+  postData.comments.forEach((post) => {
     const commentsContainer = document.createElement("div");
-    commentsContainer.classList.add("commentsContainer")
-    commentsContainer.classList.add("border")
-    commentsContainer.classList.add("rounded-pill")
-    commentsContainer.classList.add("mt-1")
+    commentsContainer.classList.add("commentsContainer");
+    commentsContainer.classList.add("border");
+    commentsContainer.classList.add("rounded-pill");
+    commentsContainer.classList.add("mt-1");
     const commentsAuthor = document.createElement("small");
-    commentsAuthor.classList.add("mb-0")
+    commentsAuthor.classList.add("mb-0");
     commentsAuthor.innerText = post.owner;
     const commentsFromUser = document.createElement("p");
-    commentsFromUser.classList.add("mb-0")
+    commentsFromUser.classList.add("mb-0");
     commentsFromUser.innerText = post.body;
-    commentsContainer.append(commentsAuthor, commentsFromUser)
-    commentBox.append(commentsContainer)
-});
+    commentsContainer.append(commentsAuthor, commentsFromUser);
+    commentBox.append(commentsContainer);
+  });
 
   const commentsForm = document.createElement("form");
   commentsForm.classList.add("mt-1");
@@ -169,10 +169,10 @@ export function postTemplate(postData) {
             body: JSON.stringify(postComment),
           });
           const result = await response.json();
-          return result
+          return result;
         }
 
-        commentPost(postComment, formID)
+        commentPost(postComment, formID);
       } catch (error) {}
     });
   }
@@ -218,7 +218,7 @@ export async function renderPostTemplates() {
       container.innerHTML = "";
       container.append(...sortedPostContent);
     });
-    sort.searchPostsSetUp(publish) 
+    sort.searchPostsSetUp(publish);
 
     userIcon();
   } catch (error) {
@@ -229,26 +229,26 @@ export async function renderPostTemplates() {
 export async function renderPostTemplate() {
   const userProfileName = storage.load("profile");
   const userName = userProfileName.name;
-try {
-  const publish = await post.getPostByUser();
-  for (let i = 0; i < publish.length; i++) {
-    const userPostAuthors = publish[i].author;
-    const users = userPostAuthors.name;
+  try {
+    const publish = await post.getPostByUser();
+    for (let i = 0; i < publish.length; i++) {
+      const userPostAuthors = publish[i].author;
+      const users = userPostAuthors.name;
+    }
+
+    let filteredPublish = publish.filter((user) => {
+      return user.author.name === userName;
+    });
+
+    const publishContent = filteredPublish.map(postTemplate);
+    const container = document.querySelector(".API-title");
+
+    container.append(...publishContent);
+    sort.searchPostsSetUp(filteredPublish);
+    userIcon();
+  } catch (error) {
+    alert("Something went wrong");
   }
-
-  let filteredPublish = publish.filter((user) => {
-    return user.author.name === userName;
-  });
-
-  const publishContent = filteredPublish.map(postTemplate);
-  const container = document.querySelector(".API-title");
-
-  container.append(...publishContent);
-  sort.searchPostsSetUp(filteredPublish) 
-  userIcon();
-} catch (error) {
-  alert("Something went wrong");
-}
 }
 
 export async function userIcon() {
@@ -280,126 +280,116 @@ export async function userIcon() {
   following.innerText = `${followCount.followers} following`;
 }
 
-
-
 export function postDetailsFollowers(postData) {
-     
   const timeLineCount = document.createElement("div");
-  timeLineCount.classList.add("imageContainer")
-  timeLineCount.classList.add("d-flex")
+  timeLineCount.classList.add("imageContainer");
+  timeLineCount.classList.add("d-flex");
   const countBody = document.createElement("div");
   countBody.classList.add("card-body");
 
-  
-  
   const followerImage = document.createElement("img");
   followerImage.classList.add("rounded-circle");
   followerImage.classList.add("avatar");
   followerImage.title = postData.name;
   followerImage.src = postData.avatar;
 
-
-  countBody.append(followerImage )
-  timeLineCount.append(countBody)
-  return timeLineCount
+  countBody.append(followerImage);
+  timeLineCount.append(countBody);
+  return timeLineCount;
 }
 export function postDetailsTemplate(postData) {
   const detailedPost = document.createElement("div");
-  
-const timeLinePosts = document.createElement("div");
-timeLinePosts.classList.add("card");
-timeLinePosts.classList.add("mb-3");
 
-const cardBody = document.createElement("div");
-cardBody.classList.add("card-body");
+  const timeLinePosts = document.createElement("div");
+  timeLinePosts.classList.add("card");
+  timeLinePosts.classList.add("mb-3");
 
-const userImageAndName = document.createElement("div");
-userImageAndName.classList.add("d-flex");
-const image = document.createElement("img");
-image.classList.add("rounded-circle");
-image.classList.add("avatar");
-image.src = postData.avatar;
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
 
-const user = document.createElement("div");
-user.classList.add("ms-2");
+  const userImageAndName = document.createElement("div");
+  userImageAndName.classList.add("d-flex");
+  const image = document.createElement("img");
+  image.classList.add("rounded-circle");
+  image.classList.add("avatar");
+  image.src = postData.avatar;
 
-const post = document.createElement("h5");
-post.classList.add("post");
-post.classList.add("card-title");
-post.classList.add("m-0");
-post.innerText = postData.owner;
+  const user = document.createElement("div");
+  user.classList.add("ms-2");
 
-const dateCreated = document.createElement("p");
-dateCreated.classList.add("fs-8");
-dateCreated.classList.add("m-0");
-dateCreated.classList.add("text-body-secondary");
-dateCreated.innerText = postData.created;
+  const post = document.createElement("h5");
+  post.classList.add("post");
+  post.classList.add("card-title");
+  post.classList.add("m-0");
+  post.innerText = postData.owner;
 
-const dateUpdated = document.createElement("p");
-dateUpdated.classList.add("fs-8");
-dateUpdated.classList.add("m-0");
-dateUpdated.classList.add("text-body-secondary");
-dateUpdated.innerText = `${postData.updated} (updated)`;
+  const dateCreated = document.createElement("p");
+  dateCreated.classList.add("fs-8");
+  dateCreated.classList.add("m-0");
+  dateCreated.classList.add("text-body-secondary");
+  dateCreated.innerText = postData.created;
 
-user.append(post, dateCreated, dateUpdated);
-userImageAndName.append(image, user);
+  const dateUpdated = document.createElement("p");
+  dateUpdated.classList.add("fs-8");
+  dateUpdated.classList.add("m-0");
+  dateUpdated.classList.add("text-body-secondary");
+  dateUpdated.innerText = `${postData.updated} (updated)`;
 
-const postTitle = document.createElement("h3");
-postTitle.classList.add("post");
-postTitle.classList.add("card-text");
-postTitle.innerText = postData.title;
+  user.append(post, dateCreated, dateUpdated);
+  userImageAndName.append(image, user);
 
-const postBody = document.createElement("p");
-postBody.classList.add("post");
-postBody.classList.add("card-text");
-postBody.innerText = postData.body;
+  const postTitle = document.createElement("h3");
+  postTitle.classList.add("post");
+  postTitle.classList.add("card-text");
+  postTitle.innerText = postData.title;
 
-const cardTop = document.createElement("div");
-cardTop.classList.add("d-flex");
-cardTop.classList.add("justify-content-between");
+  const postBody = document.createElement("p");
+  postBody.classList.add("post");
+  postBody.classList.add("card-text");
+  postBody.innerText = postData.body;
 
+  const cardTop = document.createElement("div");
+  cardTop.classList.add("d-flex");
+  cardTop.classList.add("justify-content-between");
 
-if (postData.media !== undefined) {
-  const img = document.createElement("img");
-  img.classList.add("card-img-bottom");
-  img.src = postData.media;
-  img.alt = `Image from ${postData.title}`;
-  cardTop.append(userImageAndName);
-  cardBody.append(cardTop, postTitle, postBody, img);
-  timeLinePosts.append(cardBody);
-  detailedPost.append(timeLinePosts)
-  return detailedPost;
-}
+  if (postData.media !== undefined) {
+    const img = document.createElement("img");
+    img.classList.add("card-img-bottom");
+    img.src = postData.media;
+    img.alt = `Image from ${postData.title}`;
+    cardTop.append(userImageAndName);
+    cardBody.append(cardTop, postTitle, postBody, img);
+    timeLinePosts.append(cardBody);
+    detailedPost.append(timeLinePosts);
+    return detailedPost;
+  }
 }
 
 export async function renderDetailPostTemplate() {
   const queryString = document.location.search;
   const params = new URLSearchParams(queryString);
   const id = params.get("id");
-const container = document.querySelector(".API-title");
+  const container = document.querySelector(".API-title");
   const postName = await post.getPostByOtherUser(id);
   const userName = postName.author;
   const user = userName.name;
   const userPosts = await post.showUserPosts(user);
-  
-    const following = userPosts.following;
-    const follower = userPosts.followers;
-    const posts = userPosts.posts;
-    
+
+  const following = userPosts.following;
+  const follower = userPosts.followers;
+  const posts = userPosts.posts;
 
   const postDatas = posts.map(postDetailsTemplate);
   const followersData = follower.map(postDetailsFollowers);
-  
 
   container.append(...postDatas);
-  const followerContainer = document.createElement("div")
-  followerContainer.classList.add("followerContainer")
-  followerContainer.classList.add("border")
-  followerContainer.innerText = "Followers:"
+  const followerContainer = document.createElement("div");
+  followerContainer.classList.add("followerContainer");
+  followerContainer.classList.add("border");
+  followerContainer.innerText = "Followers:";
   followerContainer.append(...followersData);
   container.prepend(followerContainer);
   otherUserIcon();
- 
 }
 
 export function redirectToHome(postData) {
@@ -431,6 +421,10 @@ export async function otherUserIcon() {
   posts.classList.add("text-primary");
   posts.innerHTML = `${followCount.posts} posts`;
   postsCount.append(posts);
+
+  posts.addEventListener("click", () => {
+    location.href = `../../posts/UserPost/index.html?id=${id}`;
+  });
 
   const userName = document.querySelector(".userName");
   userName.innerHTML = users;

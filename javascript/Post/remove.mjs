@@ -15,12 +15,10 @@ export async function removePost(id) {
     if (response.ok) {
       redirectToPost();
       return remove;
-    }else{
-        alert("You are not allowed to delete this post"); 
+    } else {
+      alert("You are not allowed to delete this post");
     }
-  } catch (error) {
-    
-  }
+  } catch (error) {}
 }
 
 function redirectToPost() {
