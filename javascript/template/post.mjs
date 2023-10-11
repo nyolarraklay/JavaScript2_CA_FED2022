@@ -176,9 +176,8 @@ export function postTemplate(postData) {
           } else {
             alert("Something went wrongh");
           }
-          
         }
-        
+
         commentPost(postComment, formID);
       } catch (error) {}
     });
@@ -269,12 +268,12 @@ export async function userIcon() {
 
   const userBanner = document.querySelector(".userBanner");
   const userImage = document.createElement("img");
-  userImage.src = profilePic.banner;
+  userImage.src = followData.banner;
   userBanner.prepend(userImage);
 
   const userAvatar = document.querySelector(".userAvatar");
   const avatar = document.createElement("img");
-  avatar.src = profilePic.avatar;
+  avatar.src = followData.avatar;
   userAvatar.prepend(avatar);
 
   const userEmail = document.querySelector(".userEmail");
@@ -447,8 +446,6 @@ export async function otherUserIcon() {
   unfollow.classList.add("ms-3");
   userName.append(follow, unfollow);
 
-  
-
   const userBanner = document.querySelector(".userBanner");
   const userImage = document.createElement("img");
   userImage.src = banner;
@@ -472,5 +469,3 @@ export async function otherUserIcon() {
     unfollow.classList.remove("bi-person-dash");
   });
 }
-
-

@@ -15,7 +15,14 @@ export async function registerToAPI(profile) {
     method,
     body: JSON.stringify(profile),
   });
+
   const result = await response.json();
   alert("you are now Registered");
-  return result;
+
+  if (response.ok) {
+    location.reload();
+    return result;
+  } else {
+    alert("Oh Ow!! Something went wrong. Please try again.");
+  }
 }
