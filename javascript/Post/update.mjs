@@ -32,12 +32,14 @@ export async function followUser(users) {
     method: "PUT",
     body: JSON.stringify(getPostsURL),
   });
-  console.log(getPostsURL);
+  const update = await response.json();
 
   if (response.ok) {
-    const update = await response.json();
+    location.reload()
 
     return update;
+  } else{
+    alert("You are already following this user.")
   }
 }
 
@@ -48,11 +50,12 @@ export async function unFollowUser(users) {
     method: "PUT",
     body: JSON.stringify(getPostsURL),
   });
-
+  const update = await response.json();
   if (response.ok) {
-    const update = await response.json();
-
+    location.reload()
     return update;
+  } else{
+    alert("You are not following this user.")
   }
 }
 

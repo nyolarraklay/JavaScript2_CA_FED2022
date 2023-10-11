@@ -169,9 +169,16 @@ export function postTemplate(postData) {
             body: JSON.stringify(postComment),
           });
           const result = await response.json();
-          return result;
-        }
 
+          if (response.ok) {
+            location.reload();
+            return result;
+          } else {
+            alert("Something went wrongh");
+          }
+          
+        }
+        
         commentPost(postComment, formID);
       } catch (error) {}
     });
@@ -433,7 +440,14 @@ export async function otherUserIcon() {
   follow.classList.add("bi-person-fill-add");
   follow.classList.add("fs-6");
   follow.classList.add("ms-3");
-  userName.append(follow);
+  const unfollow = document.createElement("i");
+  unfollow.classList.add("bi");
+  unfollow.classList.add("bi-person-dash");
+  unfollow.classList.add("fs-5");
+  unfollow.classList.add("ms-3");
+  userName.append(follow, unfollow);
+
+  
 
   const userBanner = document.querySelector(".userBanner");
   const userImage = document.createElement("img");
@@ -450,21 +464,13 @@ export async function otherUserIcon() {
 
   follow.addEventListener("click", function () {
     post.followUser(users);
-    unfollow(follow, users);
+    follow.classList.remove("bi-person-fill-add");
   });
-}
-
-function unfollow(follow, users) {
-  follow.classList.remove("bi-person-fill-add");
-  const unfollow = document.createElement("i");
-  unfollow.classList.add("bi");
-  unfollow.classList.add("bi-person-dash");
-  unfollow.classList.add("fs-5");
-  unfollow.classList.add("ms-3");
-  follow.append(unfollow);
 
   unfollow.addEventListener("click", function () {
     post.unFollowUser(users);
-    follow.remove(unfollow);
+    unfollow.classList.remove("bi-person-dash");
   });
 }
+
+

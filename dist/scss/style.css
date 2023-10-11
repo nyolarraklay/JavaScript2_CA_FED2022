@@ -105,6 +105,11 @@ nav li p {
   margin-bottom: 10px;
 }
 
+.userName i {
+  cursor: pointer;
+  font-size: 20px;
+}
+
 .avatar {
   background-color: blue;
 }
