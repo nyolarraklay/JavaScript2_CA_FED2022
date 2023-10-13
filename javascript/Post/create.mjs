@@ -3,6 +3,10 @@ import { API_BASE_URL } from "../constant/index.mjs";
 
 const action = "/api/v1/social/posts";
 
+/**
+ * This will create a post using new data from a form
+ * @param {object} createPostData This is the new data from a form
+ */
 export async function createPost(createPostData) {
   const createPostsURL = API_BASE_URL + action;
 
@@ -20,16 +24,11 @@ export async function createPost(createPostData) {
   return post;
 }
 
-function wait(time) {
-  return new Promise(function (res) {
-    setTimeout(res, time);
-  });
-}
-
 export async function waitBeforeExecute(post) {
-  createPost(post);
-
-  await wait(500);
-
-  location.reload();
+  const result = await createPost(post);
+  if (result) {
+    location.reload();
+  } else {
+    alert("Error");
+  }
 }

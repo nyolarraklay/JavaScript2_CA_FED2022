@@ -5,6 +5,9 @@ import * as template from "../template/index.mjs";
 const action = "/api/v1/social/auth/login";
 const method = "POST";
 
+/**
+ * This function will log-in registered user to the website
+ */
 export async function logIn(userData) {
   const logInURL = API_BASE_URL + action;
 
@@ -23,6 +26,6 @@ export async function logIn(userData) {
   if (response.status === 200) {
     template.redirectToHome();
   } else {
-    console.log("you are not registered");
+    alert("You are not registered. Please check if your email and password are correct. ")
   }
 }

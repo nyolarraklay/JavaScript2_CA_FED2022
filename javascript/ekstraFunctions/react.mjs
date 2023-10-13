@@ -1,6 +1,12 @@
-import { updatePost } from "../Post/update.mjs";
+import * as post from "../Post/index.mjs";
 
-export async function setUpdatePostListener(icon) {
+export async function react(id) {
+  const publish = await post.commentPost(id);
+
+  console.log(publish);
+}
+
+export async function setCommentListener(comment) {
   const form = document.querySelector("#editPost");
 
   icon.addEventListener("click", (event) => {

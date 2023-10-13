@@ -32,7 +32,8 @@
   position: relative;
 }
 
-.p-text-area, .p-text-area:focus {
+.p-text-area,
+.p-text-area:focus {
   border: none;
   font-weight: 300;
   box-shadow: none;
@@ -40,16 +41,20 @@
   font-size: 16px;
 }
 
-
 .socialAPP-user-mail {
-  margin: 10px 0 0 20px;
+  margin: 22px 0 0 0px;
   display: inline-block;
 }
 
+.socialAPP-name {
+  bottom: -10px;
+  left: 145px;
+  position: absolute;
+}
 
-.socialAPP-name  {
-  bottom: 5px;
-  left: 175px;
+.followData {
+  bottom: -30px;
+  left: 130px;
   position: absolute;
 }
 
@@ -68,6 +73,40 @@
   max-width: 680px;
 }
 
-nav li p{
+nav li p {
   cursor: pointer;
+}
+
+.statusAction button {
+  font-size: 13px;
+}
+
+.commentsContainer {
+  background-color: rgba(246, 247, 232, 0.986);
+}
+
+.commentsContainer p {
+  font-size: 15px;
+  padding: 5px;
+  margin-left: 20px;
+}
+
+.commentsContainer small {
+  font-weight: 700;
+  padding-left: 20px;
+}
+
+.followerContainer {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.userName i{
+
+cursor: pointer;
+font-size: 20px;
+
 }

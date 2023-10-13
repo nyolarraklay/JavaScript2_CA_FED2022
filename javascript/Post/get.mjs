@@ -2,7 +2,7 @@ import { fetchTokens} from "../Post/fetchTokens.mjs";
 import { API_BASE_URL} from "../constant/index.mjs";
 
 const action ="/api/v1/social/posts";
-const userPost = "?_author=true"
+const userPost = "?_author=true&_comments=true"
 
 
 export async function getPosts() {
@@ -50,3 +50,4 @@ export async function getPostByOtherUser(id) {
   
     return getPosts;
 }
+
