@@ -1,0 +1,21 @@
+{
+  "name": "javascript2_ca_fed2022",
+  "version": "0.0.1",
+  "description": "A socia media app with javascript functionality",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/scss & live-server",
+    "start": "npm run build && live-server"
+  },
+  "author": "Ernesto Osorio Jr",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.68.0"
+  }
+}
