@@ -10,5 +10,7 @@ export async function deletePostListener(deleteIcon) {
 
       removePost(id);
     });
-  } catch (error) {}
+  } catch (err) {
+    console.log(err.name);
+  }
 }

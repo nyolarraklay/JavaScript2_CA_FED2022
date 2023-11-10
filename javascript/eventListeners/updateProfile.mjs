@@ -1,5 +1,4 @@
 import { getProfile, waitBeforeExecute } from "../profile/index.mjs";
-import * as storage from "../storage/index.mjs";
 import { load } from "../storage/index.mjs";
 
 export async function setUpdateProfileListener() {

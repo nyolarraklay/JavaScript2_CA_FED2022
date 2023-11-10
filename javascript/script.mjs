@@ -1,7 +1,6 @@
 import * as listeners from "./eventListeners/index.mjs";
 import * as template from "./template/index.mjs";
 import * as clickElement from "./clickListeners/index.mjs";
-import * as post from "./Post/index.mjs";
 
 const path = location.pathname;
 

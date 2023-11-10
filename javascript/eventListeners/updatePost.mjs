@@ -21,7 +21,9 @@ export async function setUpdatePostListener(icon) {
           post.id = id;
           post.tags = tags;
           updatePost(post);
-        } catch (error) {}
+        } catch (err) {
+          console.log(err.name);
+        }
       });
     }
   });

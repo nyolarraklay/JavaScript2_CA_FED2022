@@ -146,7 +146,7 @@ export function postTemplate(postData) {
     commentsgroup,
     commentsLabel,
     commentsTextarea,
-    commentsButton,
+    commentsButton
   );
   commentBox.append(commentsForm);
   likeAndCommentContainer.append(likeAction, commentBox);
@@ -179,7 +179,9 @@ export function postTemplate(postData) {
         }
 
         commentPost(postComment, formID);
-      } catch (error) {}
+      } catch (err) {
+        console.log(err.name);
+      }
     });
   }
 
@@ -237,11 +239,6 @@ export async function renderPostTemplate() {
   const userName = userProfileName.name;
   try {
     const publish = await post.getPostByUser();
-    for (let i = 0; i < publish.length; i++) {
-      const userPostAuthors = publish[i].author;
-      const users = userPostAuthors.name;
-    }
-
     let filteredPublish = publish.filter((user) => {
       return user.author.name === userName;
     });
@@ -381,7 +378,6 @@ export async function renderDetailPostTemplate() {
   const user = userName.name;
   const userPosts = await post.showUserPosts(user);
 
-  const following = userPosts.following;
   const follower = userPosts.followers;
   const posts = userPosts.posts;
 
@@ -398,7 +394,7 @@ export async function renderDetailPostTemplate() {
   otherUserIcon();
 }
 
-export function redirectToHome(postData) {
+export function redirectToHome() {
   location.href = "../../posts/index.html";
 }
 

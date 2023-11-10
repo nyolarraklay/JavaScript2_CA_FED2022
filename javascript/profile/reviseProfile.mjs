@@ -1,6 +1,6 @@
 import { fetchTokens } from "../Post/fetchTokens.mjs";
 import { API_BASE_URL } from "../constant/index.mjs";
-import { save, remove } from "../storage/index.mjs";
+import { save } from "../storage/index.mjs";
 
 const action = "/api/v1/social/profiles";
 
