@@ -1,6 +1,6 @@
 {
   "name": "javascript2_ca_fed2022",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A socia media app with javascript functionality",
   "main": "index.js",
   "scripts": {
