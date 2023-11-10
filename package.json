@@ -8,7 +8,8 @@
     "watch": "sass --watch src/scss:dist/scss & live-server",
     "start": "npm run build && live-server",
     "format": "prettier -w javascript/**/*.mjs",
-    "lint": "eslint javascript/**/*.mjs"
+    "lint": "eslint javascript/**/*.mjs",
+    "lint-fix": "eslint javascript/**/*.mjs --cache --fix"
   },
   "author": "Ernesto Osorio Jr",
   "license": "ISC",
