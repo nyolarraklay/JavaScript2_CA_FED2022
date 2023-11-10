@@ -26,6 +26,8 @@ export async function logIn(userData) {
   if (response.status === 200) {
     template.redirectToHome();
   } else {
-    alert("You are not registered. Please check if your email and password are correct. ")
+    alert(
+      "You are not registered. Please check if your email and password are correct. ",
+    );
   }
 }

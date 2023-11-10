@@ -146,7 +146,7 @@ export function postTemplate(postData) {
     commentsgroup,
     commentsLabel,
     commentsTextarea,
-    commentsButton
+    commentsButton,
   );
   commentBox.append(commentsForm);
   likeAndCommentContainer.append(likeAction, commentBox);

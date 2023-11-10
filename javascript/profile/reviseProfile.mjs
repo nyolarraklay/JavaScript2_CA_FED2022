@@ -15,16 +15,15 @@ export async function updateProfile(profile) {
   const updateProfile = await response.json();
 
   if (response.ok) {
-    return updateProfile; 
+    return updateProfile;
   }
- 
 }
 
 export async function waitBeforeExecute(profile) {
   const result = await updateProfile(profile);
   if (result) {
     location.href = "../../posts/index.html";
-    save("profile", profile)
+    save("profile", profile);
   } else {
     alert("Error");
   }

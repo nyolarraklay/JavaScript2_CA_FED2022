@@ -12,7 +12,7 @@ if (path === "/index.html") {
 
 if (path === "/posts/index.html") {
   listeners.setCreatePostListener();
-  template.renderPostTemplates(template.postTemplate)
+  template.renderPostTemplates(template.postTemplate);
   clickElement.clickProfile();
   clickElement.clickEditProfile();
   clickElement.clickLogOut();
@@ -32,13 +32,10 @@ if (path === "/profile/edit/index.html") {
   listeners.setUpdateProfileListener();
 }
 
- 
-if (path ===  "/posts/UserPost/index.html"){
+if (path === "/posts/UserPost/index.html") {
   template.renderDetailPostTemplate();
   clickElement.clickProfile();
   clickElement.clickEditProfile();
   clickElement.clickLogOut();
   clickElement.clickHome();
-} 
-
-
+}

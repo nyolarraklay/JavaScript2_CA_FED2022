@@ -35,11 +35,11 @@ export async function followUser(users) {
   const update = await response.json();
 
   if (response.ok) {
-    location.reload()
+    location.reload();
 
     return update;
-  } else{
-    alert("You are already following this user.")
+  } else {
+    alert("You are already following this user.");
   }
 }
 
@@ -52,10 +52,10 @@ export async function unFollowUser(users) {
   });
   const update = await response.json();
   if (response.ok) {
-    location.reload()
+    location.reload();
     return update;
-  } else{
-    alert("You are not following this user.")
+  } else {
+    alert("You are not following this user.");
   }
 }
 
